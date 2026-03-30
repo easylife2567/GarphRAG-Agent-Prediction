@@ -1,0 +1,14 @@
+services:
+  garphrag-agent:
+    image: ghcr.io/easylife2567/garphrag-agent:latest
+    # 加速镜像（如拉取缓慢可替换上方地址）
+    # image: ghcr.nju.edu.cn/easylife2567/garphrag-agent:latest
+    container_name: garphrag-agent
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+      - "5001:5001"
+    restart: unless-stopped
+    volumes:
+      - ./backend/uploads:/app/backend/uploads
