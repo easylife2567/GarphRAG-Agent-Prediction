@@ -310,30 +310,31 @@ onMounted(async () => {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: var(--bg-base);
     overflow: hidden;
-    font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
+    font-family: var(--font-sans);
 }
 
 /* Header */
 .app-header {
     height: 60px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--border-dim);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    background: #fff;
+    background: var(--bg-panel);
     z-index: 100;
     position: relative;
 }
 
 .brand {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-weight: 800;
     font-size: 18px;
     letter-spacing: 1px;
     cursor: pointer;
+    color: var(--text-primary);
 }
 
 .header-center {
@@ -344,10 +345,11 @@ onMounted(async () => {
 
 .view-switcher {
     display: flex;
-    background: #f5f5f5;
+    background: var(--bg-input);
     padding: 4px;
     border-radius: 6px;
     gap: 4px;
+    border: 1px solid var(--border-dim);
 }
 
 .switch-btn {
@@ -356,16 +358,21 @@ onMounted(async () => {
     padding: 6px 16px;
     font-size: 12px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-secondary);
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: var(--transition-fast);
+}
+
+.switch-btn:hover {
+    color: var(--text-primary);
 }
 
 .switch-btn.active {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--bg-panel-hover);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-panel);
+    border: 1px solid var(--border-focus);
 }
 
 .header-right {
@@ -382,20 +389,20 @@ onMounted(async () => {
 }
 
 .step-num {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-weight: 700;
-    color: #999;
+    color: var(--text-muted);
 }
 
 .step-name {
     font-weight: 700;
-    color: #000;
+    color: var(--text-primary);
 }
 
 .step-divider {
     width: 1px;
     height: 14px;
-    background-color: #e0e0e0;
+    background-color: var(--border-dim);
 }
 
 .status-indicator {
@@ -403,7 +410,7 @@ onMounted(async () => {
     align-items: center;
     gap: 8px;
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -411,18 +418,18 @@ onMounted(async () => {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ccc;
+    background: var(--text-muted);
 }
 
 .status-indicator.processing .dot {
-    background: #ff5722;
+    background: var(--text-primary);
     animation: pulse 1s infinite;
 }
 .status-indicator.completed .dot {
-    background: #4caf50;
+    background: var(--accent-success);
 }
 .status-indicator.error .dot {
-    background: #f44336;
+    background: var(--accent-error);
 }
 
 @keyframes pulse {
@@ -437,6 +444,7 @@ onMounted(async () => {
     display: flex;
     position: relative;
     overflow: hidden;
+    background: var(--bg-base);
 }
 
 .panel-wrapper {
@@ -450,6 +458,6 @@ onMounted(async () => {
 }
 
 .panel-wrapper.left {
-    border-right: 1px solid #eaeaea;
+    border-right: 1px solid var(--border-dim);
 }
 </style>

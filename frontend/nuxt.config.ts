@@ -4,6 +4,8 @@ export default defineNuxtConfig({
 
     modules: ['@pinia/nuxt'],
 
+    css: ['~/assets/css/main.css'],
+
     app: {
         head: {
             title: 'MiroFish - 预测万物',

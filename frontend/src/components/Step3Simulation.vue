@@ -819,19 +819,19 @@ onUnmounted(() => {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: #ffffff;
-    font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
+    background: transparent;
+    font-family: var(--font-sans);
     overflow: hidden;
 }
 
 /* --- Control Bar --- */
 .control-bar {
-    background: #fff;
+    background: var(--bg-panel);
     padding: 12px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--border-dim);
     z-index: 10;
     height: 64px;
 }
@@ -847,9 +847,9 @@ onUnmounted(() => {
     flex-direction: column;
     gap: 4px;
     padding: 6px 12px;
-    border-radius: 4px;
-    background: #fafafa;
-    border: 1px solid #eaeaea;
+    border-radius: var(--radius-sm);
+    background: var(--bg-base);
+    border: 1px solid var(--border-dim);
     opacity: 0.7;
     transition: all 0.3s;
     min-width: 140px;
@@ -859,14 +859,14 @@ onUnmounted(() => {
 
 .platform-status.active {
     opacity: 1;
-    border-color: #333;
-    background: #fff;
+    border-color: var(--border-focus);
+    background: var(--bg-panel-hover);
 }
 
 .platform-status.completed {
     opacity: 1;
-    border-color: #1a936f;
-    background: #f2faf6;
+    border-color: var(--accent-success);
+    background: rgba(23, 201, 100, 0.05);
 }
 
 /* Actions Tooltip */
@@ -877,10 +877,11 @@ onUnmounted(() => {
     transform: translateX(-50%);
     margin-top: 8px;
     padding: 10px 14px;
-    background: #000;
-    color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: var(--bg-panel-hover);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-dim);
+    box-shadow: var(--shadow-panel);
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
@@ -897,7 +898,7 @@ onUnmounted(() => {
     transform: translateX(-50%);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid #000;
+    border-bottom: 6px solid var(--bg-panel-hover);
 }
 
 .platform-status:hover .actions-tooltip {
@@ -908,7 +909,7 @@ onUnmounted(() => {
 .tooltip-title {
     font-size: 10px;
     font-weight: 600;
-    color: #999;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 8px;
@@ -924,9 +925,10 @@ onUnmounted(() => {
     font-size: 10px;
     font-weight: 600;
     padding: 3px 8px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--bg-base);
+    border: 1px solid var(--border-dim);
     border-radius: 2px;
-    color: #fff;
+    color: var(--text-primary);
     letter-spacing: 0.03em;
 }
 
@@ -940,16 +942,14 @@ onUnmounted(() => {
 .platform-name {
     font-size: 11px;
     font-weight: 700;
-    color: #000;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.platform-status.twitter .platform-icon {
-    color: #000;
-}
+.platform-status.twitter .platform-icon,
 .platform-status.reddit .platform-icon {
-    color: #000;
+    color: var(--text-primary);
 }
 
 .platform-stats {
@@ -965,7 +965,7 @@ onUnmounted(() => {
 
 .stat-label {
     font-size: 8px;
-    color: #999;
+    color: var(--text-muted);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -974,19 +974,20 @@ onUnmounted(() => {
 .stat-value {
     font-size: 11px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
 }
 
 .stat-total,
 .stat-unit {
     font-size: 9px;
-    color: #999;
+    color: var(--text-secondary);
     font-weight: 400;
 }
 
 .status-badge {
     margin-left: auto;
-    color: #1a936f;
+    color: var(--accent-success);
     display: flex;
     align-items: center;
 }
@@ -1000,7 +1001,7 @@ onUnmounted(() => {
     font-size: 13px;
     font-weight: 600;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
     text-transform: uppercase;
@@ -1008,17 +1009,19 @@ onUnmounted(() => {
 }
 
 .action-btn.primary {
-    background: #000;
-    color: #fff;
+    background: var(--accent-primary);
+    color: var(--bg-base);
 }
 
 .action-btn.primary:hover:not(:disabled) {
-    background: #333;
+    background: var(--accent-primary-hover);
 }
 
 .action-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+    background: var(--border-dim);
+    color: var(--text-muted);
 }
 
 /* --- Main Content Area --- */
@@ -1026,17 +1029,17 @@ onUnmounted(() => {
     flex: 1;
     overflow-y: auto;
     position: relative;
-    background: #fff;
+    background: transparent;
 }
 
 /* Timeline Header */
 .timeline-header {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(8px);
     padding: 12px 24px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--border-dim);
     z-index: 5;
     display: flex;
     justify-content: center;
@@ -1047,15 +1050,16 @@ onUnmounted(() => {
     align-items: center;
     gap: 16px;
     font-size: 11px;
-    color: #666;
-    background: #f5f5f5;
+    color: var(--text-secondary);
+    background: var(--bg-panel);
+    border: 1px solid var(--border-dim);
     padding: 4px 12px;
     border-radius: 20px;
 }
 
 .total-count {
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .platform-breakdown {
@@ -1071,13 +1075,13 @@ onUnmounted(() => {
 }
 
 .breakdown-divider {
-    color: #ddd;
+    color: var(--border-focus);
 }
 .breakdown-item.twitter {
-    color: #000;
+    color: var(--text-primary);
 }
 .breakdown-item.reddit {
-    color: #000;
+    color: var(--text-primary);
 }
 
 /* --- Timeline Feed --- */
@@ -1095,7 +1099,7 @@ onUnmounted(() => {
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #eaeaea; /* Cleaner line */
+    background: var(--border-dim);
     transform: translateX(-50%);
 }
 
@@ -1113,8 +1117,8 @@ onUnmounted(() => {
     top: 24px;
     width: 10px;
     height: 10px;
-    background: #fff;
-    border: 1px solid #ccc;
+    background: var(--bg-base);
+    border: 1px solid var(--border-focus);
     border-radius: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -1126,38 +1130,38 @@ onUnmounted(() => {
 .marker-dot {
     width: 4px;
     height: 4px;
-    background: #ccc;
+    background: var(--border-focus);
     border-radius: 50%;
 }
 
 .timeline-item.twitter .marker-dot {
-    background: #000;
+    background: var(--text-primary);
 }
 .timeline-item.reddit .marker-dot {
-    background: #000;
+    background: var(--text-primary);
 }
 .timeline-item.twitter .timeline-marker {
-    border-color: #000;
+    border-color: var(--text-primary);
 }
 .timeline-item.reddit .timeline-marker {
-    border-color: #000;
+    border-color: var(--text-primary);
 }
 
 /* Card Layout */
 .timeline-card {
     width: calc(100% - 48px);
-    background: #fff;
-    border-radius: 2px;
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
     padding: 16px 20px;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--border-dim);
+    box-shadow: var(--shadow-panel);
     position: relative;
     transition: all 0.2s;
 }
 
 .timeline-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-color: #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-color: var(--border-bright);
 }
 
 /* Left side (Twitter) */
@@ -1187,7 +1191,7 @@ onUnmounted(() => {
     align-items: flex-start;
     margin-bottom: 12px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid var(--border-dim);
 }
 
 .agent-info {
@@ -1199,8 +1203,8 @@ onUnmounted(() => {
 .avatar-placeholder {
     width: 24px;
     height: 24px;
-    background: #000;
-    color: #fff;
+    background: var(--text-primary);
+    color: var(--bg-base);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1213,7 +1217,7 @@ onUnmounted(() => {
 .agent-name {
     font-size: 13px;
     font-weight: 600;
-    color: #000;
+    color: var(--text-primary);
 }
 
 .header-meta {
@@ -1223,7 +1227,7 @@ onUnmounted(() => {
 }
 
 .platform-indicator {
-    color: #999;
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
 }
@@ -1240,24 +1244,24 @@ onUnmounted(() => {
 
 /* Monochromatic Badges */
 .badge-post {
-    background: #f0f0f0;
-    color: #333;
-    border-color: #e0e0e0;
+    background: var(--bg-panel-hover);
+    color: var(--text-primary);
+    border-color: var(--border-dim);
 }
 .badge-comment {
-    background: #f0f0f0;
-    color: #666;
-    border-color: #e0e0e0;
+    background: var(--bg-base);
+    color: var(--text-secondary);
+    border-color: var(--border-dim);
 }
 .badge-action {
-    background: #fff;
-    color: #666;
-    border: 1px solid #e0e0e0;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-dim);
 }
 .badge-meta {
-    background: #fafafa;
-    color: #999;
-    border: 1px dashed #ddd;
+    background: var(--bg-panel-hover);
+    color: var(--text-muted);
+    border: 1px dashed var(--border-dim);
 }
 .badge-idle {
     opacity: 0.5;
@@ -1266,25 +1270,25 @@ onUnmounted(() => {
 .content-text {
     font-size: 13px;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
 .content-text.main-text {
     font-size: 14px;
-    color: #000;
+    color: var(--text-primary);
 }
 
 /* Info Blocks (Quote, Repost, etc) */
 .quoted-block,
 .repost-content {
-    background: #f9f9f9;
-    border: 1px solid #eee;
+    background: var(--bg-panel-hover);
+    border: 1px solid var(--border-dim);
     padding: 10px 12px;
     border-radius: 2px;
     margin-top: 8px;
     font-size: 12px;
-    color: #555;
+    color: var(--text-secondary);
 }
 
 .quote-header,
@@ -1300,19 +1304,19 @@ onUnmounted(() => {
     gap: 6px;
     margin-bottom: 6px;
     font-size: 11px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .icon-small {
-    color: #999;
+    color: var(--text-muted);
 }
 .icon-small.filled {
-    color: #999; /* Keep icons neutral unless highlighted */
+    color: var(--text-muted); /* Keep icons neutral unless highlighted */
 }
 
 .search-query {
     font-family: 'JetBrains Mono', monospace;
-    background: #f0f0f0;
+    background: var(--bg-base);
     padding: 0 4px;
     border-radius: 2px;
 }
@@ -1322,7 +1326,7 @@ onUnmounted(() => {
     display: flex;
     justify-content: flex-end;
     font-size: 10px;
-    color: #bbb;
+    color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
 }
 
@@ -1336,7 +1340,7 @@ onUnmounted(() => {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    color: #ccc;
+    color: var(--text-muted);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -1346,7 +1350,7 @@ onUnmounted(() => {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-dim);
     animation: ripple 2s infinite;
 }
 
@@ -1354,12 +1358,12 @@ onUnmounted(() => {
     0% {
         transform: scale(0.8);
         opacity: 1;
-        border-color: #ccc;
+        border-color: var(--text-muted);
     }
     100% {
         transform: scale(2.5);
         opacity: 0;
-        border-color: #eaeaea;
+        border-color: var(--border-dim);
     }
 }
 
@@ -1380,22 +1384,22 @@ onUnmounted(() => {
 
 /* Logs */
 .system-logs {
-    background: #000;
-    color: #ddd;
+    background: var(--bg-base);
+    color: var(--text-primary);
     padding: 16px;
-    font-family: 'JetBrains Mono', monospace;
-    border-top: 1px solid #222;
+    font-family: var(--font-mono);
+    border-top: 1px solid var(--border-dim);
     flex-shrink: 0;
 }
 
 .log-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-dim);
     padding-bottom: 8px;
     margin-bottom: 8px;
     font-size: 10px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .log-content {
@@ -1411,7 +1415,7 @@ onUnmounted(() => {
     width: 4px;
 }
 .log-content::-webkit-scrollbar-thumb {
-    background: #333;
+    background: var(--border-focus);
     border-radius: 2px;
 }
 
@@ -1423,15 +1427,15 @@ onUnmounted(() => {
 }
 
 .log-time {
-    color: #555;
+    color: var(--text-muted);
     min-width: 75px;
 }
 .log-msg {
-    color: #bbb;
+    color: var(--text-primary);
     word-break: break-all;
 }
 .mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
 }
 
 /* Loading spinner for button */
@@ -1440,7 +1444,7 @@ onUnmounted(() => {
     width: 14px;
     height: 14px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: #fff;
+    border-top-color: var(--text-primary);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin-right: 6px;
