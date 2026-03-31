@@ -1,7 +1,7 @@
 {
-  "_hash": "PxZ-XNQTkx2sxO5B8JlyZ74NvDC28DTsyUUrimCZ9Lg",
+  "_hash": "TX7CQfSs8MZZ-8r8C7JNwZyFsTb6Ozvy7XoWcukQeHY",
   "project": {
-    "rootDir": "/Users/easylife/Project/微舆/MiroFish/frontend"
+    "rootDir": "/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend"
   },
   "versions": {
     "nuxt": "3.21.2"

@@ -1,43 +1,43 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getRequestProtocol, getRequestHost, getResponseStatusText } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getRequestProtocol, getRequestHost, getResponseStatusText } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { escapeHtml } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/@vue/shared/dist/shared.cjs.js';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/vue/server-renderer/index.mjs';
-import destr, { destr as destr$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/destr/dist/index.mjs';
-import { createHooks } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unstorage/drivers/fs.mjs';
-import { digest } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/ohash/dist/index.mjs';
-import { klona } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/scule/dist/index.mjs';
-import { getContext } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unctx/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/radix3/dist/index.mjs';
+import { escapeHtml } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/@vue/shared/dist/shared.cjs.js';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/vue/server-renderer/index.mjs';
+import destr, { destr as destr$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/destr/dist/index.mjs';
+import { createHooks } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unstorage/drivers/fs.mjs';
+import { digest } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/ohash/dist/index.mjs';
+import { klona } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/scule/dist/index.mjs';
+import { getContext } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unctx/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/youch-core/build/index.js';
-import { Youch } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/youch-core/build/index.js';
+import { Youch } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { stringify, uneval } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/devalue/index.js';
-import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/errx/dist/index.js';
-import { isVNode, isRef, toValue } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/vue/index.mjs';
-import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
+import { stringify, uneval } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/devalue/index.js';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/errx/dist/index.js';
+import { isVNode, isRef, toValue } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/vue/index.mjs';
+import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/pathe/dist/index.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unhead/dist/server.mjs';
-import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unhead/dist/plugins.mjs';
-import { walkResolver } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/node_modules/unhead/dist/utils.mjs';
+import { dirname as dirname$1, resolve as resolve$1 } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/pathe/dist/index.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unhead/dist/server.mjs';
+import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unhead/dist/plugins.mjs';
+import { walkResolver } from 'file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/node_modules/unhead/dist/utils.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"/Users/easylife/Project/微舆/MiroFish/frontend/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -49,11 +49,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/easylife/Project/微舆/MiroFish/frontend","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/easylife/Project/微舆/MiroFish/frontend/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/easylife/Project/微舆/MiroFish/frontend/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/easylife/Project/微舆/MiroFish/frontend/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/easylife/Project/微舆/MiroFish/frontend/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -2029,13 +2029,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _Sakv0AM7wu0ZlXRJ3d0rFB7EYIE0lOJIqhjXO3HC6g = (function(nitro) {
+const _G8IBQPNCsWNXV4lCbFYGap3Fr4Ouv6YEGW6UNvrelc = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
-const rootDir = "/Users/easylife/Project/微舆/MiroFish/frontend";
+const rootDir = "/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend";
 
 const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"}],"link":[{"rel":"icon","type":"image/png","href":"/icon.png"},{"rel":"preconnect","href":"https://fonts.loli.net"},{"rel":"preconnect","href":"https://gstatic.loli.net","crossorigin":""},{"rel":"stylesheet","href":"https://fonts.loli.net/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"title":"MiroFish - 预测万物"};
 
@@ -2060,7 +2060,7 @@ const asyncContext = getContext("nuxt-dev", {
 	asyncContext: true,
 	AsyncLocalStorage
 });
-const _aCzhGVoifC0WHwlmZWlVpRY6pID6M6niO7ja0MwWK5E = (nitroApp) => {
+const _X1t1nDA4BaEY6q9danBVRkjZ2qkncenzj03_CSwMjQ = (nitroApp) => {
 	const handler = nitroApp.h3App.handler;
 	nitroApp.h3App.handler = (event) => {
 		return asyncContext.callAsync({
@@ -2134,8 +2134,8 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _Sakv0AM7wu0ZlXRJ3d0rFB7EYIE0lOJIqhjXO3HC6g,
-_aCzhGVoifC0WHwlmZWlVpRY6pID6M6niO7ja0MwWK5E,
+  _G8IBQPNCsWNXV4lCbFYGap3Fr4Ouv6YEGW6UNvrelc,
+_X1t1nDA4BaEY6q9danBVRkjZ2qkncenzj03_CSwMjQ,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
@@ -2164,7 +2164,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _rqiXHy = eventHandler((event) => {
+const _JZiOAG = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -2306,9 +2306,9 @@ function publicAssetsURL(...path) {
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 // @ts-expect-error file will be produced after app build
-const getServerEntry = () => import('file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
+const getServerEntry = () => import('file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
 // @ts-expect-error file will be produced after app build
-const getClientManifest = () => import('file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/MiroFish/frontend/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('file:///Users/easylife/Project/%E5%BE%AE%E8%88%86/GarphRAG-Agent-Prediction/frontend/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 // -- SSR Renderer --
 const getSSRRenderer = lazyCachedFunction(async () => {
 	// Load server bundle
@@ -2599,81 +2599,81 @@ async function getIslandContext(event) {
 	};
 }
 
-const _lazy_bP0GeE = () => Promise.resolve().then(function () { return _state; });
-const _lazy_Hwed79 = () => Promise.resolve().then(function () { return build_post$1; });
-const _lazy_L3cUr6 = () => Promise.resolve().then(function () { return data_get$1; });
-const _lazy_t1McFw = () => Promise.resolve().then(function () { return generate_post$3; });
-const _lazy_JcZEsK = () => Promise.resolve().then(function () { return project_get$1; });
-const _lazy_kbQycV = () => Promise.resolve().then(function () { return task_get$1; });
-const _lazy_rJhrea = () => Promise.resolve().then(function () { return health_get$1; });
-const _lazy_GdCMUU = () => Promise.resolve().then(function () { return _reportId__get$1; });
-const _lazy_jnCFGf = () => Promise.resolve().then(function () { return agentLog_get$1; });
-const _lazy_R7mjRY = () => Promise.resolve().then(function () { return consoleLog_get$1; });
-const _lazy_9urYQ0 = () => Promise.resolve().then(function () { return chat_post$1; });
-const _lazy_Gv7Adl = () => Promise.resolve().then(function () { return generate_post$1; });
-const _lazy_I6NiNw = () => Promise.resolve().then(function () { return status_get$1; });
-const _lazy_Amo_8d = () => Promise.resolve().then(function () { return _simulationId__get$1; });
-const _lazy_YbLtgG = () => Promise.resolve().then(function () { return actions_get$1; });
-const _lazy_x9yRqj = () => Promise.resolve().then(function () { return agentStats_get$1; });
-const _lazy_3sUvjn = () => Promise.resolve().then(function () { return config_get$1; });
-const _lazy_dOqP0e = () => Promise.resolve().then(function () { return realtime_get$3; });
-const _lazy_cir6vr = () => Promise.resolve().then(function () { return posts_get$1; });
-const _lazy_YGrbCv = () => Promise.resolve().then(function () { return profiles_get$1; });
-const _lazy_hvZxEt = () => Promise.resolve().then(function () { return realtime_get$1; });
-const _lazy_7znW2n = () => Promise.resolve().then(function () { return runStatus_get$1; });
-const _lazy_tVjG2p = () => Promise.resolve().then(function () { return detail_get$1; });
-const _lazy_TXw6Zy = () => Promise.resolve().then(function () { return timeline_get$1; });
-const _lazy_JAjEu_ = () => Promise.resolve().then(function () { return closeEnv_post$1; });
-const _lazy_8p93jU = () => Promise.resolve().then(function () { return create_post$1; });
-const _lazy_aSDbjR = () => Promise.resolve().then(function () { return envStatus_post$1; });
-const _lazy_w0VuB6 = () => Promise.resolve().then(function () { return history_get$1; });
-const _lazy_EeJ60G = () => Promise.resolve().then(function () { return batch_post$1; });
-const _lazy_s8FlNE = () => Promise.resolve().then(function () { return list_get$1; });
-const _lazy_EIPtiD = () => Promise.resolve().then(function () { return prepare_post$1; });
-const _lazy_z34WDD = () => Promise.resolve().then(function () { return status_post$1; });
-const _lazy_ZK04cU = () => Promise.resolve().then(function () { return start_post$1; });
-const _lazy_hel9xF = () => Promise.resolve().then(function () { return stop_post$1; });
-const _lazy_grYD7k = () => Promise.resolve().then(function () { return renderer; });
+const _lazy_6i799z = () => Promise.resolve().then(function () { return _state; });
+const _lazy_p917Ss = () => Promise.resolve().then(function () { return build_post$1; });
+const _lazy_AAFZLH = () => Promise.resolve().then(function () { return data_get$1; });
+const _lazy_TrhR9T = () => Promise.resolve().then(function () { return generate_post$3; });
+const _lazy_oCyvDK = () => Promise.resolve().then(function () { return project_get$1; });
+const _lazy_foGU2w = () => Promise.resolve().then(function () { return task_get$1; });
+const _lazy_RA1f56 = () => Promise.resolve().then(function () { return health_get$1; });
+const _lazy_cL1nKN = () => Promise.resolve().then(function () { return _reportId__get$1; });
+const _lazy_8VeqD1 = () => Promise.resolve().then(function () { return agentLog_get$1; });
+const _lazy_fR69mo = () => Promise.resolve().then(function () { return consoleLog_get$1; });
+const _lazy_fXhu0U = () => Promise.resolve().then(function () { return chat_post$1; });
+const _lazy_lIxpU5 = () => Promise.resolve().then(function () { return generate_post$1; });
+const _lazy_6YNDQA = () => Promise.resolve().then(function () { return status_get$1; });
+const _lazy_slNDrp = () => Promise.resolve().then(function () { return _simulationId__get$1; });
+const _lazy_ATHZtT = () => Promise.resolve().then(function () { return actions_get$1; });
+const _lazy_sAVY3O = () => Promise.resolve().then(function () { return agentStats_get$1; });
+const _lazy_smbpof = () => Promise.resolve().then(function () { return config_get$1; });
+const _lazy_xLslmp = () => Promise.resolve().then(function () { return realtime_get$3; });
+const _lazy_azjlBs = () => Promise.resolve().then(function () { return posts_get$1; });
+const _lazy_XhFP5d = () => Promise.resolve().then(function () { return profiles_get$1; });
+const _lazy_OBZ95T = () => Promise.resolve().then(function () { return realtime_get$1; });
+const _lazy_2hgYW1 = () => Promise.resolve().then(function () { return runStatus_get$1; });
+const _lazy_Uo3KqZ = () => Promise.resolve().then(function () { return detail_get$1; });
+const _lazy_l1mJkb = () => Promise.resolve().then(function () { return timeline_get$1; });
+const _lazy_nx8ZMM = () => Promise.resolve().then(function () { return closeEnv_post$1; });
+const _lazy_kSFP6g = () => Promise.resolve().then(function () { return create_post$1; });
+const _lazy_mF3CBn = () => Promise.resolve().then(function () { return envStatus_post$1; });
+const _lazy_IUa63d = () => Promise.resolve().then(function () { return history_get$1; });
+const _lazy_P_5jGe = () => Promise.resolve().then(function () { return batch_post$1; });
+const _lazy_x9u9jJ = () => Promise.resolve().then(function () { return list_get$1; });
+const _lazy_mGC5Xh = () => Promise.resolve().then(function () { return prepare_post$1; });
+const _lazy_vhGl85 = () => Promise.resolve().then(function () { return status_post$1; });
+const _lazy_XTLu90 = () => Promise.resolve().then(function () { return start_post$1; });
+const _lazy_prYqqN = () => Promise.resolve().then(function () { return stop_post$1; });
+const _lazy_W3xp1W = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
-  { route: '', handler: _rqiXHy, lazy: false, middleware: true, method: undefined },
-  { route: '/api/mock/_state', handler: _lazy_bP0GeE, lazy: true, middleware: false, method: undefined },
-  { route: '/api/mock/graph/build', handler: _lazy_Hwed79, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/graph/data', handler: _lazy_L3cUr6, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/graph/ontology/generate', handler: _lazy_t1McFw, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/graph/project', handler: _lazy_JcZEsK, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/graph/task', handler: _lazy_kbQycV, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/health', handler: _lazy_rJhrea, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/report/:reportId', handler: _lazy_GdCMUU, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/report/:reportId/agent-log', handler: _lazy_jnCFGf, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/report/:reportId/console-log', handler: _lazy_R7mjRY, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/report/chat', handler: _lazy_9urYQ0, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/report/generate', handler: _lazy_Gv7Adl, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/report/generate/status', handler: _lazy_I6NiNw, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId', handler: _lazy_Amo_8d, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/actions', handler: _lazy_YbLtgG, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/agent-stats', handler: _lazy_x9yRqj, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/config', handler: _lazy_3sUvjn, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/config/realtime', handler: _lazy_dOqP0e, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/posts', handler: _lazy_cir6vr, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/profiles', handler: _lazy_YGrbCv, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/profiles/realtime', handler: _lazy_hvZxEt, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/run-status', handler: _lazy_7znW2n, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/run-status/detail', handler: _lazy_tVjG2p, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/:simulationId/timeline', handler: _lazy_TXw6Zy, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/close-env', handler: _lazy_JAjEu_, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/create', handler: _lazy_8p93jU, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/env-status', handler: _lazy_aSDbjR, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/history', handler: _lazy_w0VuB6, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/interview/batch', handler: _lazy_EeJ60G, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/list', handler: _lazy_s8FlNE, lazy: true, middleware: false, method: "get" },
-  { route: '/api/mock/simulation/prepare', handler: _lazy_EIPtiD, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/prepare/status', handler: _lazy_z34WDD, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/start', handler: _lazy_ZK04cU, lazy: true, middleware: false, method: "post" },
-  { route: '/api/mock/simulation/stop', handler: _lazy_hel9xF, lazy: true, middleware: false, method: "post" },
-  { route: '/__nuxt_error', handler: _lazy_grYD7k, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _JZiOAG, lazy: false, middleware: true, method: undefined },
+  { route: '/api/mock/_state', handler: _lazy_6i799z, lazy: true, middleware: false, method: undefined },
+  { route: '/api/mock/graph/build', handler: _lazy_p917Ss, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/graph/data', handler: _lazy_AAFZLH, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/graph/ontology/generate', handler: _lazy_TrhR9T, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/graph/project', handler: _lazy_oCyvDK, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/graph/task', handler: _lazy_foGU2w, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/health', handler: _lazy_RA1f56, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/report/:reportId', handler: _lazy_cL1nKN, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/report/:reportId/agent-log', handler: _lazy_8VeqD1, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/report/:reportId/console-log', handler: _lazy_fR69mo, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/report/chat', handler: _lazy_fXhu0U, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/report/generate', handler: _lazy_lIxpU5, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/report/generate/status', handler: _lazy_6YNDQA, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId', handler: _lazy_slNDrp, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/actions', handler: _lazy_ATHZtT, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/agent-stats', handler: _lazy_sAVY3O, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/config', handler: _lazy_smbpof, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/config/realtime', handler: _lazy_xLslmp, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/posts', handler: _lazy_azjlBs, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/profiles', handler: _lazy_XhFP5d, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/profiles/realtime', handler: _lazy_OBZ95T, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/run-status', handler: _lazy_2hgYW1, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/run-status/detail', handler: _lazy_Uo3KqZ, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/:simulationId/timeline', handler: _lazy_l1mJkb, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/close-env', handler: _lazy_nx8ZMM, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/create', handler: _lazy_kSFP6g, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/env-status', handler: _lazy_mF3CBn, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/history', handler: _lazy_IUa63d, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/interview/batch', handler: _lazy_P_5jGe, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/list', handler: _lazy_x9u9jJ, lazy: true, middleware: false, method: "get" },
+  { route: '/api/mock/simulation/prepare', handler: _lazy_mGC5Xh, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/prepare/status', handler: _lazy_vhGl85, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/start', handler: _lazy_XTLu90, lazy: true, middleware: false, method: "post" },
+  { route: '/api/mock/simulation/stop', handler: _lazy_prYqqN, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_error', handler: _lazy_W3xp1W, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_grYD7k, lazy: true, middleware: false, method: undefined }
+  { route: '/**', handler: _lazy_W3xp1W, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {

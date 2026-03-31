@@ -1,155 +1,292 @@
 <template>
-    <div class="home-container">
-        <!-- 顶部导航栏 -->
-        <nav class="navbar">
-            <div class="nav-brand">GarphRAG-Agent-Prediction</div>
+    <div class="system-container">
+        <!-- Dynamic Background -->
+        <div class="system-bg">
+            <div class="bg-glow-orb orb-1"></div>
+            <div class="bg-glow-orb orb-2"></div>
+            <div class="bg-minimal-mesh"></div>
+        </div>
+
+        <!-- Header -->
+        <nav class="system-nav">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="20"
+                        height="20"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"
+                    >
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <span class="brand-text">GraphRAG</span>
+                <span class="badge-system">Core v1.0</span>
+            </div>
             <div class="nav-links">
-                <a href="https://github.com/easylife2567/GarphRAG-Agent-Prediction" target="_blank" class="github-link">
-                    访问我们的Github主页 <span class="arrow">↗</span>
+                <a
+                    href="https://github.com/easylife2567/GarphRAG-Agent-Prediction"
+                    target="_blank"
+                    class="btn-secondary"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                        ></path>
+                    </svg>
+                    <span>GitHub</span>
                 </a>
             </div>
         </nav>
 
-        <div class="main-content">
-            <!-- 上半部分：Hero 区域 -->
+        <main class="system-main">
+            <!-- Hero Section -->
             <section class="hero-section">
-                <div class="hero-left">
-                    <div class="tag-row">
-                        <span class="orange-tag">简洁通用的群体智能引擎</span>
-                        <span class="version-text">/ v0.1-预览版</span>
+                <div class="hero-content">
+                    <div class="status-indicator">
+                        <span class="status-dot live"></span>
+                        <span class="status-text">System Online & Ready</span>
                     </div>
 
-                    <h1 class="main-title">
-                        上传任意报告<br />
-                        <span class="gradient-text">即刻推演未来</span>
+                    <h1 class="hero-title">
+                        Inject Reality.<br />
+                        <span class="text-highlight">Simulate Future.</span>
                     </h1>
 
-                    <div class="hero-desc">
-                        <p>
-                            即使只有一段文字，<span class="highlight-bold">GarphRAG-Agent</span>
-                            也能基于其中的现实种子，全自动生成与之对应的至多<span
-                                class="highlight-orange"
-                                >百万级Agent</span
-                            >构成的平行世界。通过上帝视角注入变量，在复杂的群体交互中寻找动态环境下的<span
-                                class="highlight-code"
-                                >“局部最优解”</span
-                            >
-                        </p>
-                        <p class="slogan-text">
-                            让未来在 Agent 群中预演，让决策在百战后胜出<span class="blinking-cursor"
-                                >_</span
-                            >
-                        </p>
-                    </div>
-
-                    <div class="decoration-square"></div>
-                </div>
-
-                <div class="hero-right">
-                    <!-- Logo 区域 -->
-                    <div class="logo-container">
-                        <img
-                            src="~/assets/logo/MiroFish_logo_left.jpeg"
-                            alt="MiroFish Logo"
-                            class="hero-logo"
-                        />
-                    </div>
-
-                    <button class="scroll-down-btn" @click="scrollToBottom">↓</button>
+                    <p class="hero-desc">
+                        基于核心认知图谱提取现实种子，毫秒级构建
+                        <strong>百万级 Agent 平行世界</strong
+                        >。通过全知视角注入变量干扰，在复杂的高维群体博弈中，动态坍缩出最优决策路径。
+                    </p>
                 </div>
             </section>
 
-            <!-- 下半部分：双栏布局 -->
-            <section class="dashboard-section">
-                <!-- 左栏：状态与步骤 -->
-                <div class="left-panel">
-                    <div class="panel-header"><span class="status-dot">■</span> 系统状态</div>
-
-                    <h2 class="section-title">准备就绪</h2>
-                    <p class="section-desc">
-                        预测引擎待命中，可上传多份非结构化数据以初始化模拟序列
-                    </p>
-
-                    <!-- 数据指标卡片 -->
-                    <div class="metrics-row">
-                        <div class="metric-card">
-                            <div class="metric-value">低成本</div>
-                            <div class="metric-label">常规模拟平均5$/次</div>
+            <!-- Main Control Panel (Structured Layout) -->
+            <section class="control-panel">
+                <!-- Left: Execution Steps -->
+                <aside class="panel-sidebar panel-steps">
+                    <div class="panel-header">
+                        <div class="icon-box">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="16"
+                                height="16"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                fill="none"
+                            >
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
                         </div>
-                        <div class="metric-card">
-                            <div class="metric-value">高可用</div>
-                            <div class="metric-label">最多百万级Agent模拟</div>
+                        <h3>Execution Pipeline</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="stepper-system">
+                            <div
+                                v-for="(step, i) in steps"
+                                :key="i"
+                                class="step-item"
+                                :class="{
+                                    active: activeStep === i,
+                                    completed: activeStep > i,
+                                    pending: activeStep < i,
+                                }"
+                            >
+                                <div class="step-marker">
+                                    <div class="marker-icon">
+                                        <svg
+                                            v-if="activeStep > i"
+                                            viewBox="0 0 24 24"
+                                            width="14"
+                                            height="14"
+                                            stroke="currentColor"
+                                            stroke-width="3"
+                                            fill="none"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span v-else>{{ i + 1 }}</span>
+                                    </div>
+                                    <div class="marker-line" v-if="i < steps.length - 1"></div>
+                                </div>
+                                <div class="step-content">
+                                    <h4 class="step-title">{{ step.title }}</h4>
+                                    <p class="step-desc" v-show="activeStep === i">
+                                        {{ step.desc }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </aside>
 
-                    <!-- 项目模拟步骤介绍 (新增区域) -->
-                    <div class="steps-container">
-                        <div class="steps-header">
-                            <span class="diamond-icon">◇</span> 工作流序列
+                <!-- Center: Simulation Input (MAIN FOCUS) -->
+                <div class="panel-main panel-input">
+                    <div class="panel-header border-bottom">
+                        <div class="icon-box">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="16"
+                                height="16"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                fill="none"
+                            >
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
                         </div>
-                        <div class="workflow-list">
-                            <div class="workflow-item">
-                                <span class="step-num">01</span>
-                                <div class="step-info">
-                                    <div class="step-title">图谱构建</div>
-                                    <div class="step-desc">
-                                        现实种子提取 & 个体与群体记忆注入 & GraphRAG构建
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="workflow-item">
-                                <span class="step-num">02</span>
-                                <div class="step-info">
-                                    <div class="step-title">环境搭建</div>
-                                    <div class="step-desc">
-                                        实体关系抽取 & 人设生成 & 环境配置Agent注入仿真参数
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="workflow-item">
-                                <span class="step-num">03</span>
-                                <div class="step-info">
-                                    <div class="step-title">开始模拟</div>
-                                    <div class="step-desc">
-                                        双平台并行模拟 & 自动解析预测需求 & 动态更新时序记忆
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="workflow-item">
-                                <span class="step-num">04</span>
-                                <div class="step-info">
-                                    <div class="step-title">报告生成</div>
-                                    <div class="step-desc">
-                                        ReportAgent拥有丰富的工具集与模拟后环境进行深度交互
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="workflow-item">
-                                <span class="step-num">05</span>
-                                <div class="step-info">
-                                    <div class="step-title">深度互动</div>
-                                    <div class="step-desc">
-                                        与模拟世界中的任意一位进行对话 & 与ReportAgent进行对话
-                                    </div>
-                                </div>
-                            </div>
+                        <h3>Define Scenario</h3>
+                        <span class="tag-engine">Engine: V1.0</span>
+                    </div>
+                    <div class="panel-body input-container">
+                        <label class="input-label">Simulation Variables</label>
+                        <div class="textarea-wrapper" :class="{ 'is-focused': isInputFocused }">
+                            <textarea
+                                v-model="formData.simulationRequirement"
+                                class="system-textarea"
+                                placeholder="Enter prediction variables here...&#10;e.g., 'If the university issues an announcement revoking the disciplinary action, what will be the trend of public opinion?'"
+                                rows="6"
+                                :disabled="loading"
+                                @focus="isInputFocused = true"
+                                @blur="isInputFocused = false"
+                            ></textarea>
+                            <div class="input-glow"></div>
+                        </div>
+
+                        <div class="action-footer">
+                            <button
+                                class="btn-primary-large"
+                                @click="startSimulation"
+                                :disabled="!canSubmit || loading"
+                            >
+                                <span class="btn-content" v-if="!loading">
+                                    Initialize Simulation
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="18"
+                                        height="18"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                    >
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </span>
+                                <span class="btn-content" v-else>
+                                    <svg
+                                        class="spinner"
+                                        viewBox="0 0 24 24"
+                                        width="18"
+                                        height="18"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        fill="none"
+                                    >
+                                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                                        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                                        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                                        <line x1="2" y1="12" x2="6" y2="12"></line>
+                                        <line x1="18" y1="12" x2="22" y2="12"></line>
+                                        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                                        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                                    </svg>
+                                    Processing...
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 右栏：交互控制台 -->
-                <div class="right-panel">
-                    <div class="console-box">
-                        <!-- 上传区域 -->
-                        <div class="console-section">
-                            <div class="console-header">
-                                <span class="console-label">01 / 现实种子</span>
-                                <span class="console-meta">支持格式: PDF, MD, TXT</span>
+                <!-- Right: Metrics & Upload -->
+                <aside class="panel-sidebar panel-right">
+                    <!-- System Metrics -->
+                    <div class="panel panel-metrics">
+                        <div class="panel-header border-bottom">
+                            <div class="icon-box">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    width="16"
+                                    height="16"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    fill="none"
+                                >
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
                             </div>
+                            <h3>System Metrics</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-label">Graph Nodes (Entities)</div>
+                                    <div class="metric-value">
+                                        {{ metrics.nodes.toLocaleString() }}
+                                        <span class="trend up">↑ Live</span>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-label">Parallel Agents</div>
+                                    <div class="metric-value">
+                                        {{ (metrics.agents / 1000000).toFixed(3) }}M
+                                        <span class="trend up">↑</span>
+                                    </div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-label">Inference Latency</div>
+                                    <div class="metric-value highlight">
+                                        ~{{ metrics.latency.toFixed(1) }}ms
+                                        <span class="trend down">Optimal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Knowledge Base Upload -->
+                    <div class="panel panel-upload">
+                        <div class="panel-header border-bottom">
+                            <div class="icon-box">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    width="16"
+                                    height="16"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    fill="none"
+                                >
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                            <h3>Knowledge Base</h3>
+                        </div>
+                        <div class="panel-body">
                             <div
-                                class="upload-zone"
-                                :class="{ 'drag-over': isDragOver, 'has-files': files.length > 0 }"
+                                class="system-dropzone"
+                                :class="{
+                                    'is-dragover': isDragOver,
+                                    'has-files': files.length > 0,
+                                }"
                                 @dragover.prevent="handleDragOver"
                                 @dragleave.prevent="handleDragLeave"
                                 @drop.prevent="handleDrop"
@@ -165,10 +302,30 @@
                                     :disabled="loading"
                                 />
 
-                                <div v-if="files.length === 0" class="upload-placeholder">
-                                    <div class="upload-icon">↑</div>
-                                    <div class="upload-title">拖拽文件上传</div>
-                                    <div class="upload-hint">或点击浏览文件系统</div>
+                                <div v-if="files.length === 0" class="drop-state-empty">
+                                    <div class="upload-icon">
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="20"
+                                            height="20"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            fill="none"
+                                        >
+                                            <rect
+                                                x="3"
+                                                y="3"
+                                                width="18"
+                                                height="18"
+                                                rx="2"
+                                                ry="2"
+                                            ></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </div>
+                                    <span class="drop-text">Click or drag files</span>
+                                    <span class="drop-hint">PDF, MD, TXT</span>
                                 </div>
 
                                 <div v-else class="file-list">
@@ -177,124 +334,124 @@
                                         :key="index"
                                         class="file-item"
                                     >
-                                        <span class="file-icon">📄</span>
-                                        <span class="file-name">{{ file.name }}</span>
-                                        <button @click.stop="removeFile(index)" class="remove-btn">
-                                            ×
+                                        <svg
+                                            class="file-icon"
+                                            viewBox="0 0 24 24"
+                                            width="14"
+                                            height="14"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            fill="none"
+                                        >
+                                            <path
+                                                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                                            ></path>
+                                            <polyline points="13 2 13 9 20 9"></polyline>
+                                        </svg>
+                                        <span class="file-name" :title="file.name">{{
+                                            file.name
+                                        }}</span>
+                                        <button @click.stop="removeFile(index)" class="btn-remove">
+                                            <svg
+                                                viewBox="0 0 24 24"
+                                                width="14"
+                                                height="14"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                fill="none"
+                                            >
+                                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- 分割线 -->
-                        <div class="console-divider">
-                            <span>输入参数</span>
-                        </div>
-
-                        <!-- 输入区域 -->
-                        <div class="console-section">
-                            <div class="console-header">
-                                <span class="console-label">>_ 02 / 模拟提示词</span>
-                            </div>
-                            <div class="input-wrapper">
-                                <textarea
-                                    v-model="formData.simulationRequirement"
-                                    class="code-input"
-                                    placeholder="// 用自然语言输入模拟或预测需求（例.武大若发布撤销肖某处分的公告，会引发什么舆情走向）"
-                                    rows="6"
-                                    :disabled="loading"
-                                ></textarea>
-                                <div class="model-badge">引擎: GarphRAG-Agent-V1.0</div>
-                            </div>
-                        </div>
-
-                        <!-- 启动按钮 -->
-                        <div class="console-section btn-section">
-                            <button
-                                class="start-engine-btn"
-                                @click="startSimulation"
-                                :disabled="!canSubmit || loading"
-                            >
-                                <span v-if="!loading">启动引擎</span>
-                                <span v-else>初始化中...</span>
-                                <span class="btn-arrow">→</span>
-                            </button>
-                        </div>
                     </div>
-                </div>
+                </aside>
             </section>
 
-            <!-- 历史项目数据库 -->
-            <HistoryDatabase />
-        </div>
+            <!-- History Database -->
+            <HistoryDatabase class="history-section" />
+        </main>
     </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from '#app';
 
 definePageMeta({
-    hideHeader: true, // This will hide the default layout header for the home page
+    hideHeader: true,
 });
 
 const router = useRouter();
 
-// 表单数据
+const steps = [
+    { title: 'Knowledge Graph', desc: '提取现实种子并构建 GraphRAG 底层网络。' },
+    { title: 'Environment Setup', desc: '抽取实体关系并配置高维仿真环境参数。' },
+    { title: 'Parallel Simulate', desc: '双平台高并发推演，实时更新时序记忆。' },
+    { title: 'Report Generate', desc: 'ReportAgent 多维度数据收敛与归因分析。' },
+    { title: 'Deep Interaction', desc: '开启上帝视角与推演节点建立直接对话。' },
+];
+
+const activeStep = ref(0);
+const isInputFocused = ref(false);
+
+const metrics = ref({
+    nodes: 8432,
+    agents: 1205000,
+    latency: 5.2,
+});
+
+// Simulate stepper progression and dynamic metrics
+onMounted(() => {
+    // Stepper carousel
+    setInterval(() => {
+        activeStep.value = (activeStep.value + 1) % steps.length;
+    }, 3000);
+
+    // Metrics fluctuation to simulate live system
+    setInterval(() => {
+        metrics.value.nodes += Math.floor(Math.random() * 5) + 1; // gradually increases
+        metrics.value.agents += Math.floor(Math.random() * 200) + 50;
+        metrics.value.latency = +(5 + (Math.random() * 0.8 - 0.4)).toFixed(1); // fluctuates around 5.0
+    }, 1500);
+});
+
 const formData = ref({
     simulationRequirement: '',
 });
 
-// 文件列表
 const files = ref([]);
-
-// 状态
 const loading = ref(false);
-const error = ref('');
 const isDragOver = ref(false);
-
-// 文件输入引用
 const fileInput = ref(null);
 
-// 计算属性:是否可以提交
 const canSubmit = computed(() => {
     return formData.value.simulationRequirement.trim() !== '' && files.value.length > 0;
 });
 
-// 触发文件选择
 const triggerFileInput = () => {
-    if (!loading.value) {
-        fileInput.value?.click();
-    }
+    if (!loading.value) fileInput.value?.click();
 };
 
-// 处理文件选择
 const handleFileSelect = (event) => {
-    const selectedFiles = Array.from(event.target.files);
-    addFiles(selectedFiles);
+    addFiles(Array.from(event.target.files));
 };
 
-// 处理拖拽相关
-const handleDragOver = (e) => {
-    if (!loading.value) {
-        isDragOver.value = true;
-    }
+const handleDragOver = () => {
+    if (!loading.value) isDragOver.value = true;
 };
-
-const handleDragLeave = (e) => {
+const handleDragLeave = () => {
     isDragOver.value = false;
 };
-
 const handleDrop = (e) => {
     isDragOver.value = false;
-    if (loading.value) return;
-
-    const droppedFiles = Array.from(e.dataTransfer.files);
-    addFiles(droppedFiles);
+    if (!loading.value) addFiles(Array.from(e.dataTransfer.files));
 };
 
-// 添加文件
 const addFiles = (newFiles) => {
     const validFiles = newFiles.filter((file) => {
         const ext = file.name.split('.').pop().toLowerCase();
@@ -303,630 +460,717 @@ const addFiles = (newFiles) => {
     files.value.push(...validFiles);
 };
 
-// 移除文件
 const removeFile = (index) => {
     files.value.splice(index, 1);
 };
 
-// 滚动到底部
-const scrollToBottom = () => {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-    });
-};
-
-// 开始模拟 - 立即跳转，API调用在Process页面进行
 const startSimulation = () => {
     if (!canSubmit.value || loading.value) return;
+    loading.value = true;
+    activeStep.value = 2; // Jump stepper to running phase
 
-    // 引入并在客户端使用 Pinia Store
     import('~/stores/project').then(({ useProjectStore }) => {
         const projectStore = useProjectStore();
-        // File is non-serializable across routes if SSR is involved, but since we navigate on client side it's fine.
-        // Make sure we pass the raw files
         projectStore.setPendingUpload([...files.value], formData.value.simulationRequirement);
 
-        // 使用 push 可能会因为同路由参数或某些守卫被拦截，这里加一个时间戳参数强制刷新
-        router.push({
-            path: '/process/new',
-            query: { t: Date.now() },
-        });
+        setTimeout(() => {
+            router.push({ path: '/process/new', query: { t: Date.now() } });
+        }, 800);
     });
 };
 </script>
 
 <style scoped>
-/* 全局变量与重置 */
+/* Core Variables: Linear/Vercel Aesthetic */
 :root {
-    --black: #000000;
-    --white: #ffffff;
-    --orange: #ff4500;
-    --gray-light: #f5f5f5;
-    --gray-text: #666666;
-    --border: #e5e5e5;
-    /* 
-    使用 Space Grotesk 作为主要标题字体，JetBrains Mono 作为代码/标签字体
-    确保已在 index.html 引入这些 Google Fonts 
-  */
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-sans: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
-    --font-cn: 'Noto Sans SC', system-ui, sans-serif;
+    --bg-base: #000000;
+    --bg-panel: #0a0a0a;
+    --bg-panel-hover: #111111;
+    --border-dim: #222222;
+    --border-bright: #333333;
+    --border-focus: #555555;
+
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-muted: #666666;
+
+    --accent-primary: #ffffff;
+    --accent-primary-hover: #e0e0e0;
+    --accent-success: #17c964;
+    --accent-error: #f31260;
+
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    --shadow-panel: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 32px rgba(255, 255, 255, 0.05);
+
+    --transition-fast: 150ms ease;
+    --transition-smooth: 250ms ease;
 }
 
-.home-container {
+/* Base System Styles */
+.system-container {
     min-height: 100vh;
-    background: var(--white);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
     font-family: var(--font-sans);
-    color: var(--black);
-}
-
-/* 顶部导航 */
-.navbar {
-    height: 60px;
-    background: var(--black);
-    color: var(--white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-}
-
-.nav-brand {
-    font-family: var(--font-mono);
-    font-weight: 800;
-    letter-spacing: 1px;
-    font-size: 1.2rem;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.github-link {
-    color: var(--white);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: opacity 0.2s;
-}
-
-.github-link:hover {
-    opacity: 0.8;
-}
-
-.arrow {
-    font-family: sans-serif;
-}
-
-/* 主要内容区 */
-.main-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 60px 40px;
-}
-
-/* Hero 区域 */
-.hero-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 80px;
     position: relative;
+    overflow-x: hidden;
+    /* Apply variables directly in case :root scoping issues */
+    --bg-base: #000000;
+    --bg-panel: #0a0a0a;
+    --bg-panel-hover: #111111;
+    --bg-input: #050505;
+    --border-dim: #222222;
+    --border-bright: #333333;
+    --border-focus: #666666;
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-muted: #555555;
+    --accent-primary: #ffffff;
+    --accent-primary-hover: #cccccc;
+    --accent-success: #17c964;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition-fast: 150ms ease;
+    --transition-smooth: 250ms ease;
 }
 
-.hero-left {
-    flex: 1;
-    padding-right: 60px;
+/* Dynamic Background */
+.system-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: var(--bg-base);
+    overflow: hidden;
 }
 
-.tag-row {
+.bg-glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    animation: drift 20s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+    width: 60vw;
+    height: 60vh;
+    background: #3b82f6; /* Blueish */
+    top: -10vh;
+    left: -10vw;
+}
+
+.orb-2 {
+    width: 50vw;
+    height: 50vh;
+    background: #8b5cf6; /* Purpleish */
+    bottom: -10vh;
+    right: -10vw;
+    animation-delay: -10s;
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(10vw, 5vh) scale(1.1);
+    }
+}
+
+.bg-minimal-mesh {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Header */
+.system-nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    height: 64px;
+    border-bottom: 1px solid var(--border-dim);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.brand {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
+    gap: 12px;
 }
 
-.orange-tag {
-    background: var(--orange);
-    color: var(--white);
-    padding: 4px 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 0.75rem;
-}
-
-.version-text {
-    color: #999;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.main-title {
-    font-size: 4.5rem;
-    line-height: 1.2;
-    font-weight: 500;
-    margin: 0 0 40px 0;
-    letter-spacing: -2px;
-    color: var(--black);
-}
-
-.gradient-text {
-    background: linear-gradient(90deg, #000000 0%, #444444 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.hero-desc {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--gray-text);
-    max-width: 640px;
-    margin-bottom: 50px;
-    font-weight: 400;
-    text-align: justify;
-}
-
-.hero-desc p {
-    margin-bottom: 1.5rem;
-}
-
-.highlight-bold {
-    color: var(--black);
-    font-weight: 700;
-}
-
-.highlight-orange {
-    color: var(--orange);
-    font-weight: 700;
-    font-family: var(--font-mono);
-}
-
-.highlight-code {
-    background: rgba(0, 0, 0, 0.05);
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-family: var(--font-mono);
-    font-size: 0.9em;
-    color: var(--black);
-    font-weight: 600;
-}
-
-.slogan-text {
-    font-size: 1.2rem;
-    font-weight: 520;
-    color: var(--black);
-    letter-spacing: 1px;
-    border-left: 3px solid var(--orange);
-    padding-left: 15px;
-    margin-top: 20px;
-}
-
-.blinking-cursor {
-    color: var(--orange);
-    animation: blink 1s step-end infinite;
-    font-weight: 700;
-}
-
-@keyframes blink {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-}
-
-.decoration-square {
-    width: 16px;
-    height: 16px;
-    background: var(--orange);
-}
-
-.hero-right {
-    flex: 0.8;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 40px;
-}
-
-.hero-logo {
-    max-width: 500px; /* 调整logo大小 */
-    width: 100%;
-}
-
-.scroll-down-btn {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border);
-    background: transparent;
+.brand-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    color: var(--orange);
-    font-size: 1.2rem;
-    transition: all 0.2s;
+    color: var(--text-primary);
 }
 
-.scroll-down-btn:hover {
-    border-color: var(--orange);
+.brand-text {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
-/* Dashboard 双栏布局 */
-.dashboard-section {
+.badge-system {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    background: var(--border-dim);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-bright);
+}
+
+.btn-secondary {
     display: flex;
-    gap: 60px;
-    border-top: 1px solid var(--border);
-    padding-top: 60px;
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
 }
 
-.dashboard-section .left-panel,
-.dashboard-section .right-panel {
+.btn-secondary:hover {
+    color: var(--text-primary);
+    border-color: var(--border-dim);
+    background: var(--bg-panel);
+}
+
+/* Main Content */
+.system-main {
+    position: relative;
+    z-index: 10;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-dim);
+    border-radius: 999px;
+    margin-bottom: 24px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.status-dot.live {
+    background: var(--accent-success);
+    box-shadow: 0 0 8px rgba(23, 201, 100, 0.4);
+}
+
+.status-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin: 0 0 24px 0;
+    color: var(--text-secondary);
+}
+
+.text-highlight {
+    color: var(--text-primary);
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.hero-desc strong {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Control Panel (Structured Layout) */
+.control-panel {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Panels */
+.panel,
+.panel-sidebar,
+.panel-main {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-dim);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.panel-main {
+    min-height: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-color: var(--border-bright);
+}
+
+.panel-right {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    gap: 24px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.panel-header.border-bottom {
+    border-bottom: 1px solid var(--border-dim);
+}
+
+.icon-box {
+    color: var(--text-secondary);
+    display: flex;
+}
+
+.panel-header h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.tag-engine {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: var(--bg-base);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border-dim);
+}
+
+.panel-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Left: Stepper System */
+.stepper-system {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.step-item {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.step-item:last-child {
+    padding-bottom: 0;
+}
+
+.step-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24px;
+}
+
+.marker-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg-base);
+    border: 1px solid var(--border-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    z-index: 2;
+    transition: var(--transition-smooth);
+}
+
+.marker-line {
+    position: absolute;
+    top: 24px;
+    bottom: 0;
+    left: 11.5px;
+    width: 1px;
+    background: var(--border-dim);
+    z-index: 1;
+}
+
+.step-content {
+    flex: 1;
+    padding-top: 2px;
+}
+
+.step-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 4px 0;
+    transition: var(--transition-smooth);
+}
+
+.step-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Stepper States */
+.step-item.active .marker-icon {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg-base);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.step-item.active .step-title {
+    color: var(--text-primary);
+}
+
+.step-item.completed .marker-icon {
+    background: var(--bg-panel);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.step-item.completed .step-title {
+    color: var(--text-secondary);
+}
+
+.step-item.pending .marker-icon {
+    opacity: 0.5;
+}
+
+/* Center: Simulation Input */
+.input-container {
+    gap: 16px;
+}
+
+.input-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.textarea-wrapper {
+    position: relative;
+    flex: 1;
+    background: var(--bg-input);
+    border: 1px solid var(--border-dim);
+    border-radius: var(--radius-md);
+    transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
 }
 
-/* 左侧面板 */
-.left-panel {
-    flex: 0.8;
+.textarea-wrapper.is-focused {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 1px var(--border-focus);
 }
 
-.panel-header {
+.system-textarea {
+    flex: 1;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px;
+    color: var(--text-primary);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+}
+
+.system-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.action-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.btn-primary-large {
+    background: var(--accent-primary);
+    color: var(--bg-base);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary-large:not(:disabled):hover {
+    background: var(--accent-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary-large:disabled {
+    background: var(--border-dim);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.btn-content {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
 }
 
-.status-dot {
-    color: var(--orange);
-    font-size: 0.8rem;
-}
-
-.section-title {
-    font-size: 2rem;
-    font-weight: 520;
-    margin: 0 0 15px 0;
-}
-
-.section-desc {
-    color: var(--gray-text);
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-.metrics-row {
+/* Right: Metrics & Upload */
+.metrics-grid {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    margin-bottom: 15px;
 }
 
-.metric-card {
-    border: 1px solid var(--border);
-    padding: 20px 30px;
-    min-width: 150px;
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .metric-value {
     font-family: var(--font-mono);
-    font-size: 1.8rem;
-    font-weight: 520;
-    margin-bottom: 5px;
-}
-
-.metric-label {
-    font-size: 0.85rem;
-    color: #999;
-}
-
-/* 项目模拟步骤介绍 */
-.steps-container {
-    border: 1px solid var(--border);
-    padding: 30px;
-    position: relative;
-}
-
-.steps-header {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #999;
-    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
 }
 
-.diamond-icon {
-    font-size: 1.2rem;
-    line-height: 1;
+.metric-value.highlight {
+    color: var(--text-primary);
 }
 
-.workflow-list {
+.trend {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.trend.up {
+    color: var(--accent-success);
+    background: rgba(23, 201, 100, 0.1);
+}
+
+.trend.down {
+    color: var(--text-primary);
+    background: var(--border-dim);
+}
+
+/* Dropzone */
+.system-dropzone {
+    border: 1px dashed var(--border-bright);
+    border-radius: var(--radius-md);
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.workflow-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.step-num {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    color: var(--black);
-    opacity: 0.3;
-}
-
-.step-info {
-    flex: 1;
-}
-
-.step-title {
-    font-weight: 520;
-    font-size: 1rem;
-    margin-bottom: 4px;
-}
-
-.step-desc {
-    font-size: 0.85rem;
-    color: var(--gray-text);
-}
-
-/* 右侧交互控制台 */
-.right-panel {
-    flex: 1.2;
-}
-
-.console-box {
-    border: 1px solid #ccc; /* 外部实线 */
-    padding: 8px; /* 内边距形成双重边框感 */
-}
-
-.console-section {
-    padding: 20px;
-}
-
-.console-section.btn-section {
-    padding-top: 0;
-}
-
-.console-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: #666;
-}
-
-.upload-zone {
-    border: 1px dashed #ccc;
-    height: 200px;
-    overflow-y: auto;
-    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s;
-    background: #fafafa;
+    transition: var(--transition-fast);
+    background: var(--bg-base);
+    min-height: 120px;
 }
 
-.upload-zone.has-files {
-    align-items: flex-start;
+.system-dropzone:hover,
+.system-dropzone.is-dragover {
+    border-color: var(--border-focus);
+    background: var(--bg-panel-hover);
 }
 
-.upload-zone:hover {
-    background: #f0f0f0;
-    border-color: #999;
-}
-
-.upload-placeholder {
+.drop-state-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     text-align: center;
 }
 
 .upload-icon {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    color: #999;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
 }
 
-.upload-title {
+.drop-text {
+    font-size: 0.85rem;
     font-weight: 500;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    color: var(--text-primary);
 }
 
-.upload-hint {
-    font-family: var(--font-mono);
+.drop-hint {
     font-size: 0.75rem;
-    color: #999;
+    color: var(--text-muted);
 }
 
 .file-list {
     width: 100%;
-    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .file-item {
     display: flex;
     align-items: center;
-    background: var(--white);
     padding: 8px 12px;
-    border: 1px solid #eee;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-dim);
+    border-radius: var(--radius-sm);
+    gap: 8px;
+}
+
+.file-icon {
+    color: var(--text-secondary);
 }
 
 .file-name {
     flex: 1;
-    margin: 0 10px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.remove-btn {
+.btn-remove {
     background: none;
     border: none;
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
-    color: #999;
-}
-
-.console-divider {
+    padding: 4px;
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    justify-content: center;
+    border-radius: 4px;
 }
 
-.console-divider::before,
-.console-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #eee;
+.btn-remove:hover {
+    color: var(--text-primary);
+    background: var(--border-dim);
 }
 
-.console-divider span {
-    padding: 0 15px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: #bbb;
-    letter-spacing: 1px;
+/* Utilities */
+.spinner {
+    animation: spin 1s linear infinite;
 }
 
-.input-wrapper {
-    position: relative;
-    border: 1px solid #ddd;
-    background: #fafafa;
-}
-
-.code-input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    padding: 20px;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    resize: vertical;
-    outline: none;
-    min-height: 150px;
-}
-
-.model-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: #aaa;
-}
-
-.start-engine-btn {
-    width: 100%;
-    background: var(--black);
-    color: var(--white);
-    border: none;
-    padding: 20px;
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* 可点击状态（非禁用） */
-.start-engine-btn:not(:disabled) {
-    background: var(--black);
-    border: 1px solid var(--black);
-    animation: pulse-border 2s infinite;
-}
-
-.start-engine-btn:hover:not(:disabled) {
-    background: var(--orange);
-    border-color: var(--orange);
-    transform: translateY(-2px);
-}
-
-.start-engine-btn:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.start-engine-btn:disabled {
-    background: #e5e5e5;
-    color: #999;
-    cursor: not-allowed;
-    transform: none;
-    border: 1px solid #e5e5e5;
-}
-
-/* 引导动画：微妙的边框脉冲 */
-@keyframes pulse-border {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
     }
-    70% {
-        box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    to {
+        transform: rotate(360deg);
     }
 }
 
-/* 响应式适配 */
+/* Responsive */
 @media (max-width: 1024px) {
-    .dashboard-section {
-        flex-direction: column;
+    .control-panel {
+        grid-template-columns: 1fr;
     }
-
-    .hero-section {
-        flex-direction: column;
+    .panel-sidebar {
+        display: none; /* Simplify on mobile */
     }
-
-    .hero-left {
-        padding-right: 0;
-        margin-bottom: 40px;
+    .panel-right {
+        gap: 16px;
     }
-
-    .hero-logo {
-        max-width: 200px;
-        margin-bottom: 20px;
+    .hero-title {
+        font-size: 2.5rem;
     }
 }
 </style>
