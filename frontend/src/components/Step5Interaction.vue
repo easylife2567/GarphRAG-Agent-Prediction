@@ -103,8 +103,19 @@
                 <!-- Exit Mechanism -->
                 <div v-if="reportOutline" class="exit-actions-container">
                     <button class="btn-exit" @click="exitToHistory">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M19 12H5M12 19l-7-7 7-7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
                         </svg>
                         完成并返回首页
                     </button>
@@ -1229,7 +1240,6 @@ watch(
 </script>
 
 <style scoped>
-
 .interaction-panel {
     height: 100%;
     display: flex;
@@ -1584,6 +1594,44 @@ watch(
 
 .waiting-text {
     font-size: 14px;
+}
+
+/* Exit Mechanism */
+.exit-actions-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-exit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    border: 1px solid var(--border-dim);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-exit:hover {
+    background: var(--bg-panel-hover);
+    border-color: var(--text-secondary);
+}
+
+.btn-exit svg {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.btn-exit:hover svg {
+    color: var(--text-primary);
 }
 
 /* Right Panel - Interaction */
@@ -2884,5 +2932,4 @@ watch(
     border-top: 1px solid var(--border-dim);
     margin: 24px 0;
 }
-
 </style>
