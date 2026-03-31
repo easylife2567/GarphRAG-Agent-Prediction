@@ -621,25 +621,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* ===== 核心变量 (与 index.vue 保持一致) ===== */
-.history-database {
-    --bg-base: #000000;
-    --bg-panel: #0a0a0a;
-    --bg-panel-hover: #111111;
-    --border-dim: #222222;
-    --border-bright: #333333;
-    --border-focus: #555555;
-    --text-primary: #ffffff;
-    --text-secondary: #888888;
-    --text-muted: #666666;
-    --accent-primary: #ffffff;
-    --accent-primary-hover: #e0e0e0;
-    --accent-success: #17c964;
-    --accent-error: #f31260;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
 /* 容器 */
 .history-database {
     position: relative;

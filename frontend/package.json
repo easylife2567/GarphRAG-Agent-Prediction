@@ -4,9 +4,9 @@
     "version": "0.1.0",
     "type": "module",
     "scripts": {
-        "predev": "rm -rf .nuxt .output",
+        "predev": "nuxi cleanup",
         "dev": "nuxt dev --host",
-        "prebuild": "rm -rf .nuxt .output",
+        "prebuild": "nuxi cleanup",
         "build": "nuxt build",
         "preview": "nuxt preview",
         "generate": "nuxt generate",

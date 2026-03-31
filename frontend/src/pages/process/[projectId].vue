@@ -30,9 +30,9 @@
         </ClientOnly>
 
         <!-- Main Content Area -->
-        <main class="content-area">
+        <main class="content-area" :style="{ gap: viewMode === 'split' ? '16px' : '0px' }">
             <!-- Left Panel: Graph -->
-            <div class="panel-wrapper left" :style="leftPanelStyle">
+            <div class="panel-wrapper panel left" :style="leftPanelStyle">
                 <GraphPanel
                     :graphData="graphData"
                     :loading="graphLoading"
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Right Panel: Step Components -->
-            <div class="panel-wrapper right" :style="rightPanelStyle">
+            <div class="panel-wrapper panel right" :style="rightPanelStyle">
                 <!-- Step 1: 图谱构建 -->
                 <Step1GraphBuild
                     v-if="currentStep === 1"
@@ -172,16 +172,16 @@ const leftPanelStyle = computed(() => {
     if (viewMode.value === 'graph')
         return { width: '100%', opacity: 1, transform: 'translateX(0)' };
     if (viewMode.value === 'workbench')
-        return { width: '0%', opacity: 0, transform: 'translateX(-20px)' };
-    return { width: '50%', opacity: 1, transform: 'translateX(0)' };
+        return { width: '0%', opacity: 0, transform: 'translateX(-20px)', border: 'none', padding: 0 };
+    return { width: 'calc(50% - 8px)', opacity: 1, transform: 'translateX(0)' };
 });
 
 const rightPanelStyle = computed(() => {
     if (viewMode.value === 'workbench')
         return { width: '100%', opacity: 1, transform: 'translateX(0)' };
     if (viewMode.value === 'graph')
-        return { width: '0%', opacity: 0, transform: 'translateX(20px)' };
-    return { width: '50%', opacity: 1, transform: 'translateX(0)' };
+        return { width: '0%', opacity: 0, transform: 'translateX(20px)', border: 'none', padding: 0 };
+    return { width: 'calc(50% - 8px)', opacity: 1, transform: 'translateX(0)' };
 });
 
 // --- Status Computed ---
@@ -298,47 +298,21 @@ const refreshGraph = () => {
 
 <style scoped>
 .main-view {
-    height: 100vh;
+    height: calc(100vh - 64px); /* Adjusted for layout nav */
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: transparent;
     overflow: hidden;
-    font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
-}
-
-/* Header */
-.app-header {
-    height: 60px;
-    border-bottom: 1px solid #eaeaea;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    background: #fff;
-    z-index: 100;
-    position: relative;
-}
-
-.header-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 1px;
-    cursor: pointer;
+    font-family: var(--font-sans);
 }
 
 .view-switcher {
     display: flex;
-    background: #f5f5f5;
+    background: var(--bg-panel);
     padding: 4px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     gap: 4px;
+    border: 1px solid var(--border-dim);
 }
 
 .switch-btn {
@@ -347,16 +321,16 @@ const refreshGraph = () => {
     padding: 6px 16px;
     font-size: 12px;
     font-weight: 600;
-    color: #666;
+    color: var(--text-secondary);
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: var(--transition-fast);
 }
 
 .switch-btn.active {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--border-dim);
+    color: var(--text-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .status-indicator {
@@ -364,14 +338,8 @@ const refreshGraph = () => {
     align-items: center;
     gap: 8px;
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
     font-weight: 500;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
 }
 
 .workflow-step {
@@ -382,44 +350,42 @@ const refreshGraph = () => {
 }
 
 .step-num {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-weight: 700;
-    color: #999;
+    color: var(--text-muted);
 }
 
 .step-name {
     font-weight: 700;
-    color: #000;
+    color: var(--text-primary);
 }
 
 .step-divider {
     width: 1px;
     height: 14px;
-    background-color: #e0e0e0;
+    background-color: var(--border-dim);
 }
 
 .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ccc;
+    background: var(--text-muted);
 }
 
 .status-indicator.processing .dot {
-    background: #ff5722;
+    background: var(--accent-success);
     animation: pulse 1s infinite;
 }
 .status-indicator.completed .dot {
-    background: #4caf50;
+    background: var(--accent-success);
 }
 .status-indicator.error .dot {
-    background: #f44336;
+    background: var(--accent-error);
 }
 
 @keyframes pulse {
-    50% {
-        opacity: 0.5;
-    }
+    50% { opacity: 0.5; }
 }
 
 /* Content */
@@ -428,6 +394,8 @@ const refreshGraph = () => {
     display: flex;
     position: relative;
     overflow: hidden;
+    gap: 16px;
+    padding: 16px;
 }
 
 .panel-wrapper {
@@ -441,6 +409,6 @@ const refreshGraph = () => {
 }
 
 .panel-wrapper.left {
-    border-right: 1px solid #eaeaea;
+    /* border-right removed because .panel provides its own borders */
 }
 </style>

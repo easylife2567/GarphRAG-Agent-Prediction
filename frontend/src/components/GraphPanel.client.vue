@@ -285,8 +285,8 @@ const toggleSelfLoop = (id) => {
 const entityTypes = computed(() => {
   if (!props.graphData?.nodes) return []
   const typeMap = {}
-  // 美观的颜色调色板
-  const colors = ['#FF6B35', '#004E89', '#7B2D8E', '#1A936F', '#C5283D', '#E9724C', '#3498db', '#9b59b6', '#27ae60', '#f39c12']
+  // 暗黑高对比度调色板 (Dark Linear/Vercel Aesthetic)
+  const colors = ['#3b82f6', '#8b5cf6', '#10b981', '#f43f5e', '#f59e0b', '#06b6d4', '#6366f1', '#d946ef', '#14b8a6', '#f97316']
   
   props.graphData.nodes.forEach(node => {
     const type = node.labels?.find(l => l !== 'Entity') || 'Entity'
@@ -601,18 +601,18 @@ const renderGraph = () => {
   const link = linkGroup.selectAll('path')
     .data(edges)
     .enter().append('path')
-    .attr('stroke', '#C0C0C0')
+    .attr('stroke', '#333333')
     .attr('stroke-width', 1.5)
     .attr('fill', 'none')
     .style('cursor', 'pointer')
     .on('click', (event, d) => {
       event.stopPropagation()
       // 重置之前选中边的样式
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
+      linkGroup.selectAll('path').attr('stroke', '#333333').attr('stroke-width', 1.5)
+      linkLabelBg.attr('fill', 'rgba(10, 10, 10, 0.95)')
+      linkLabels.attr('fill', '#888888')
       // 高亮当前选中的边
-      d3.select(event.target).attr('stroke', '#3498db').attr('stroke-width', 3)
+      d3.select(event.target).attr('stroke', '#ffffff').attr('stroke-width', 3)
       
       selectedItem.value = {
         type: 'edge',
@@ -620,11 +620,11 @@ const renderGraph = () => {
       }
     })
 
-  // Link labels background (白色背景使文字更清晰)
+  // Link labels background (暗色背景使文字更清晰)
   const linkLabelBg = linkGroup.selectAll('rect')
     .data(edges)
     .enter().append('rect')
-    .attr('fill', 'rgba(255,255,255,0.95)')
+    .attr('fill', 'rgba(10, 10, 10, 0.95)')
     .attr('rx', 3)
     .attr('ry', 3)
     .style('cursor', 'pointer')
@@ -632,12 +632,12 @@ const renderGraph = () => {
     .style('display', showEdgeLabels.value ? 'block' : 'none')
     .on('click', (event, d) => {
       event.stopPropagation()
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
+      linkGroup.selectAll('path').attr('stroke', '#333333').attr('stroke-width', 1.5)
+      linkLabelBg.attr('fill', 'rgba(10, 10, 10, 0.95)')
+      linkLabels.attr('fill', '#888888')
       // 高亮对应的边
-      link.filter(l => l === d).attr('stroke', '#3498db').attr('stroke-width', 3)
-      d3.select(event.target).attr('fill', 'rgba(52, 152, 219, 0.1)')
+      link.filter(l => l === d).attr('stroke', '#ffffff').attr('stroke-width', 3)
+      d3.select(event.target).attr('fill', 'rgba(255, 255, 255, 0.1)')
       
       selectedItem.value = {
         type: 'edge',
@@ -651,21 +651,21 @@ const renderGraph = () => {
     .enter().append('text')
     .text(d => d.name)
     .attr('font-size', '9px')
-    .attr('fill', '#666')
+    .attr('fill', '#888888')
     .attr('text-anchor', 'middle')
     .attr('dominant-baseline', 'middle')
     .style('cursor', 'pointer')
     .style('pointer-events', 'all')
-    .style('font-family', 'system-ui, sans-serif')
+    .style('font-family', 'var(--font-sans)')
     .style('display', showEdgeLabels.value ? 'block' : 'none')
     .on('click', (event, d) => {
       event.stopPropagation()
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
-      linkLabelBg.attr('fill', 'rgba(255,255,255,0.95)')
-      linkLabels.attr('fill', '#666')
+      linkGroup.selectAll('path').attr('stroke', '#333333').attr('stroke-width', 1.5)
+      linkLabelBg.attr('fill', 'rgba(10, 10, 10, 0.95)')
+      linkLabels.attr('fill', '#888888')
       // 高亮对应的边
-      link.filter(l => l === d).attr('stroke', '#3498db').attr('stroke-width', 3)
-      d3.select(event.target).attr('fill', '#3498db')
+      link.filter(l => l === d).attr('stroke', '#ffffff').attr('stroke-width', 3)
+      d3.select(event.target).attr('fill', '#ffffff')
       
       selectedItem.value = {
         type: 'edge',
@@ -686,7 +686,7 @@ const renderGraph = () => {
     .enter().append('circle')
     .attr('r', 10)
     .attr('fill', d => getColor(d.type))
-    .attr('stroke', '#fff')
+    .attr('stroke', '#111111')
     .attr('stroke-width', 2.5)
     .style('cursor', 'pointer')
     .call(d3.drag()
@@ -728,13 +728,13 @@ const renderGraph = () => {
     .on('click', (event, d) => {
       event.stopPropagation()
       // 重置所有节点样式
-      node.attr('stroke', '#fff').attr('stroke-width', 2.5)
-      linkGroup.selectAll('path').attr('stroke', '#C0C0C0').attr('stroke-width', 1.5)
+      node.attr('stroke', '#111111').attr('stroke-width', 2.5)
+      linkGroup.selectAll('path').attr('stroke', '#333333').attr('stroke-width', 1.5)
       // 高亮选中节点
-      d3.select(event.target).attr('stroke', '#E91E63').attr('stroke-width', 4)
+      d3.select(event.target).attr('stroke', '#ffffff').attr('stroke-width', 4)
       // 高亮与此节点相连的边
       link.filter(l => l.source.id === d.id || l.target.id === d.id)
-        .attr('stroke', '#E91E63')
+        .attr('stroke', '#ffffff')
         .attr('stroke-width', 2.5)
       
       selectedItem.value = {
@@ -746,13 +746,45 @@ const renderGraph = () => {
     })
     .on('mouseenter', (event, d) => {
       if (!selectedItem.value || selectedItem.value.data?.uuid !== d.rawData.uuid) {
-        d3.select(event.target).attr('stroke', '#333').attr('stroke-width', 3)
+        d3.select(event.target).attr('stroke', '#888888').attr('stroke-width', 3)
       }
+      
+      // 添加节点标签提示
+      const nodeX = d.x
+      const nodeY = d.y
+      
+      const tooltip = g.append('g')
+        .attr('class', 'node-tooltip')
+        .attr('transform', `translate(${nodeX}, ${nodeY - 20})`)
+        .style('pointer-events', 'none')
+        
+      // 计算文本宽度
+      const text = tooltip.append('text')
+        .text(d.name)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '12px')
+        .attr('font-family', 'var(--font-sans)')
+        .attr('fill', '#ffffff')
+        .attr('font-weight', '500')
+        
+      const bbox = text.node().getBBox()
+      const padding = 6
+      
+      tooltip.insert('rect', 'text')
+        .attr('x', bbox.x - padding)
+        .attr('y', bbox.y - padding)
+        .attr('width', bbox.width + padding * 2)
+        .attr('height', bbox.height + padding * 2)
+        .attr('fill', 'rgba(10, 10, 10, 0.8)')
+        .attr('rx', 4)
+        .attr('stroke', 'var(--border-dim)')
+        .attr('stroke-width', 1)
     })
     .on('mouseleave', (event, d) => {
       if (!selectedItem.value || selectedItem.value.data?.uuid !== d.rawData.uuid) {
-        d3.select(event.target).attr('stroke', '#fff').attr('stroke-width', 2.5)
+        d3.select(event.target).attr('stroke', '#111111').attr('stroke-width', 2.5)
       }
+      g.selectAll('.node-tooltip').remove()
     })
 
   // Node Labels
@@ -894,10 +926,12 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #FAFAFA;
-  background-image: radial-gradient(#D0D0D0 1.5px, transparent 1.5px);
+  background-color: var(--bg-panel);
+  background-image: radial-gradient(var(--border-dim) 1px, transparent 1px);
   background-size: 24px 24px;
   overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-dim);
 }
 
 .panel-header {
@@ -910,14 +944,14 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0));
+  background: linear-gradient(to bottom, var(--bg-panel), transparent);
   pointer-events: none;
 }
 
 .panel-title {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   pointer-events: auto;
 }
 
@@ -931,24 +965,24 @@ onUnmounted(() => {
 .tool-btn {
   height: 32px;
   padding: 0 12px;
-  border: 1px solid #E0E0E0;
-  background: #FFF;
-  border-radius: 6px;
+  border: 1px solid var(--border-dim);
+  background: var(--bg-base);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-secondary);
   transition: all 0.2s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-panel);
   font-size: 13px;
 }
 
 .tool-btn:hover {
-  background: #F5F5F5;
-  color: #000;
-  border-color: #CCC;
+  background: var(--bg-panel-hover);
+  color: var(--text-primary);
+  border-color: var(--border-bright);
 }
 
 .tool-btn .btn-text {
@@ -978,7 +1012,7 @@ onUnmounted(() => {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .empty-icon {
@@ -992,11 +1026,11 @@ onUnmounted(() => {
   position: absolute;
   bottom: 24px;
   left: 24px;
-  background: rgba(255,255,255,0.95);
+  background: rgba(10, 10, 10, 0.95);
   padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #EAEAEA;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-dim);
+  box-shadow: var(--shadow-panel);
   z-index: 10;
 }
 
@@ -1004,7 +1038,7 @@ onUnmounted(() => {
   display: block;
   font-size: 11px;
   font-weight: 600;
-  color: #E91E63;
+  color: var(--text-secondary);
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1022,7 +1056,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #555;
+  color: var(--text-primary);
 }
 
 .legend-dot {
@@ -1044,11 +1078,11 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #FFF;
+  background: var(--bg-panel);
   padding: 8px 14px;
   border-radius: 20px;
-  border: 1px solid #E0E0E0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-dim);
+  box-shadow: var(--shadow-panel);
   z-index: 10;
 }
 
@@ -1072,7 +1106,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #E0E0E0;
+  background-color: var(--border-focus);
   border-radius: 22px;
   transition: 0.3s;
 }
@@ -1084,13 +1118,13 @@ onUnmounted(() => {
   width: 16px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--text-primary);
   border-radius: 50%;
   transition: 0.3s;
 }
 
 input:checked + .slider {
-  background-color: #7B2D8E;
+  background-color: var(--accent-success);
 }
 
 input:checked + .slider:before {
@@ -1099,7 +1133,7 @@ input:checked + .slider:before {
 
 .toggle-label {
   font-size: 12px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 /* Detail Panel - Right Side */
@@ -1109,12 +1143,12 @@ input:checked + .slider:before {
   right: 20px;
   width: 320px;
   max-height: calc(100% - 100px);
-  background: #FFF;
-  border: 1px solid #EAEAEA;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
   overflow: hidden;
-  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   z-index: 20;
   display: flex;
@@ -1126,14 +1160,14 @@ input:checked + .slider:before {
   justify-content: space-between;
   align-items: center;
   padding: 14px 16px;
-  background: #FAFAFA;
-  border-bottom: 1px solid #EEE;
+  background: var(--bg-panel-hover);
+  border-bottom: 1px solid var(--border-dim);
   flex-shrink: 0;
 }
 
 .detail-title {
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   font-size: 14px;
 }
 
@@ -1144,6 +1178,7 @@ input:checked + .slider:before {
   font-weight: 500;
   margin-left: auto;
   margin-right: 12px;
+  color: var(--bg-base) !important;
 }
 
 .detail-close {
@@ -1151,14 +1186,14 @@ input:checked + .slider:before {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #999;
+  color: var(--text-muted);
   line-height: 1;
   padding: 0;
   transition: color 0.2s;
 }
 
 .detail-close:hover {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .detail-content {
@@ -1175,39 +1210,39 @@ input:checked + .slider:before {
 }
 
 .detail-label {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
   min-width: 80px;
 }
 
 .detail-value {
-  color: #333;
+  color: var(--text-primary);
   flex: 1;
   word-break: break-word;
 }
 
 .detail-value.uuid-text {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .detail-value.fact-text {
   line-height: 1.5;
-  color: #444;
+  color: var(--text-primary);
 }
 
 .detail-section {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid #F0F0F0;
+  border-top: 1px solid var(--border-dim);
 }
 
 .section-title {
   font-size: 12px;
   font-weight: 600;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 10px;
 }
 
@@ -1223,19 +1258,19 @@ input:checked + .slider:before {
 }
 
 .property-key {
-  color: #888;
+  color: var(--text-secondary);
   font-weight: 500;
   min-width: 90px;
 }
 
 .property-value {
-  color: #333;
+  color: var(--text-primary);
   flex: 1;
 }
 
 .summary-text {
   line-height: 1.6;
-  color: #444;
+  color: var(--text-primary);
   font-size: 12px;
 }
 
@@ -1248,11 +1283,11 @@ input:checked + .slider:before {
 .label-tag {
   display: inline-block;
   padding: 4px 12px;
-  background: #F5F5F5;
-  border: 1px solid #E0E0E0;
+  background: var(--bg-panel-hover);
+  border: 1px solid var(--border-dim);
   border-radius: 16px;
   font-size: 11px;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .episodes-list {
@@ -1264,24 +1299,24 @@ input:checked + .slider:before {
 .episode-tag {
   display: inline-block;
   padding: 6px 10px;
-  background: #F8F8F8;
-  border: 1px solid #E8E8E8;
+  background: var(--bg-panel-hover);
+  border: 1px solid var(--border-dim);
   border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
-  color: #666;
+  color: var(--text-secondary);
   word-break: break-all;
 }
 
 /* Edge relation header */
 .edge-relation-header {
-  background: #F8F8F8;
+  background: var(--bg-panel-hover);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   margin-bottom: 16px;
   font-size: 13px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
   line-height: 1.5;
   word-break: break-word;
 }
@@ -1292,17 +1327,17 @@ input:checked + .slider:before {
   bottom: 160px; /* Moved up from 80px */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(8px);
-  color: #fff;
+  color: var(--text-primary);
   padding: 10px 20px;
   border-radius: 30px;
   font-size: 13px;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-glow);
+  border: 1px solid var(--border-focus);
   font-weight: 500;
   letter-spacing: 0.5px;
   z-index: 100;
@@ -1318,18 +1353,18 @@ input:checked + .slider:before {
 .memory-icon {
   width: 18px;
   height: 18px;
-  color: #4CAF50;
+  color: var(--accent-success);
 }
 
 @keyframes breathe {
-  0%, 100% { opacity: 0.7; transform: scale(1); filter: drop-shadow(0 0 2px rgba(76, 175, 80, 0.3)); }
-  50% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6)); }
+  0%, 100% { opacity: 0.7; transform: scale(1); filter: drop-shadow(0 0 2px rgba(23, 201, 100, 0.3)); }
+  50% { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(23, 201, 100, 0.6)); }
 }
 
 /* 模拟结束后的提示样式 */
 .graph-building-hint.finished-hint {
-  background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--border-dim);
 }
 
 .finished-hint .hint-icon-wrapper {
@@ -1341,7 +1376,7 @@ input:checked + .slider:before {
 .finished-hint .hint-icon {
   width: 18px;
   height: 18px;
-  color: #FFF;
+  color: var(--text-primary);
 }
 
 .finished-hint .hint-text {
@@ -1355,18 +1390,18 @@ input:checked + .slider:before {
   justify-content: center;
   width: 22px;
   height: 22px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--bg-panel-hover);
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: #FFF;
+  color: var(--text-primary);
   transition: all 0.2s;
   margin-left: 8px;
   flex-shrink: 0;
 }
 
 .hint-close-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--border-focus);
   transform: scale(1.1);
 }
 
@@ -1374,8 +1409,8 @@ input:checked + .slider:before {
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #E0E0E0;
-  border-top-color: #7B2D8E;
+  border: 3px solid var(--border-dim);
+  border-top-color: var(--accent-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 16px;
@@ -1386,15 +1421,15 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
-  border: 1px solid #C8E6C9;
+  background: var(--bg-panel-hover);
+  border: 1px solid var(--border-dim);
 }
 
 .self-loop-count {
   margin-left: auto;
   font-size: 11px;
-  color: #666;
-  background: rgba(255,255,255,0.8);
+  color: var(--text-secondary);
+  background: var(--bg-base);
   padding: 2px 8px;
   border-radius: 10px;
 }
@@ -1406,9 +1441,9 @@ input:checked + .slider:before {
 }
 
 .self-loop-item {
-  background: #FAFAFA;
-  border: 1px solid #EAEAEA;
-  border-radius: 8px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius-md);
 }
 
 .self-loop-item-header {
@@ -1416,24 +1451,24 @@ input:checked + .slider:before {
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  background: #F5F5F5;
+  background: var(--bg-panel);
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .self-loop-item-header:hover {
-  background: #EEEEEE;
+  background: var(--bg-panel-hover);
 }
 
 .self-loop-item.expanded .self-loop-item-header {
-  background: #E8E8E8;
+  background: var(--border-dim);
 }
 
 .self-loop-index {
   font-size: 10px;
   font-weight: 600;
-  color: #888;
-  background: #E0E0E0;
+  color: var(--text-secondary);
+  background: var(--bg-base);
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -1441,7 +1476,7 @@ input:checked + .slider:before {
 .self-loop-name {
   font-size: 12px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
   flex: 1;
 }
 
@@ -1453,20 +1488,20 @@ input:checked + .slider:before {
   justify-content: center;
   font-size: 14px;
   font-weight: 600;
-  color: #888;
-  background: #E0E0E0;
+  color: var(--text-secondary);
+  background: var(--bg-panel);
   border-radius: 4px;
   transition: all 0.2s;
 }
 
 .self-loop-item.expanded .self-loop-toggle {
-  background: #D0D0D0;
-  color: #666;
+  background: var(--border-focus);
+  color: var(--text-primary);
 }
 
 .self-loop-item-content {
   padding: 12px;
-  border-top: 1px solid #EAEAEA;
+  border-top: 1px solid var(--border-dim);
 }
 
 .self-loop-item-content .detail-row {

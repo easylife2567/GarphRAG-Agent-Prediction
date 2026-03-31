@@ -1,0 +1,109 @@
+:root {
+    --bg-base: #000000;
+    --bg-panel: #0a0a0a;
+    --bg-panel-hover: #111111;
+    --bg-input: #050505;
+    --border-dim: #222222;
+    --border-bright: #333333;
+    --border-focus: #666666;
+
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-muted: #555555;
+
+    --accent-primary: #ffffff;
+    --accent-primary-hover: #cccccc;
+    --accent-success: #17c964;
+    --accent-error: #f31260;
+
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: 'Inter', 'Space Grotesk', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    --shadow-panel: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 32px rgba(255, 255, 255, 0.05);
+
+    --transition-fast: 150ms ease;
+    --transition-smooth: 250ms ease;
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-focus);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Global Utility Classes */
+.panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-dim);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-panel);
+}
+
+.panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-dim);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: var(--bg-base);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btn-primary:hover {
+    background: var(--accent-primary-hover);
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.btn-secondary:hover {
+    color: var(--text-primary);
+    border-color: var(--border-dim);
+    background: var(--bg-panel);
+}
