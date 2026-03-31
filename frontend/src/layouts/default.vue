@@ -100,14 +100,14 @@ const goHome = () => {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.15;
-    animation: drift 20s ease-in-out infinite alternate;
+    opacity: 0.25; /* 提高透明度使白色光晕更明显 */
+    animation: drift 10s ease-in-out infinite alternate; /* 将时间从 20s 缩短到 10s，让运动更快 */
 }
 
 .orb-1 {
     width: 60vw;
     height: 60vh;
-    background: #3b82f6; /* Blueish */
+    background: #ffffff; /* Whiteish */
     top: -10vh;
     left: -10vw;
 }
@@ -115,7 +115,7 @@ const goHome = () => {
 .orb-2 {
     width: 50vw;
     height: 50vh;
-    background: #8b5cf6; /* Purpleish */
+    background: rgba(255, 255, 255, 0.5); /* Whiteish transparent */
     bottom: -10vh;
     right: -10vw;
     animation-delay: -10s;
@@ -125,8 +125,14 @@ const goHome = () => {
     0% {
         transform: translate(0, 0) scale(1);
     }
+    33% {
+        transform: translate(30vw, -10vh) scale(1.4);
+    }
+    66% {
+        transform: translate(-10vw, 30vh) scale(0.8);
+    }
     100% {
-        transform: translate(10vw, 5vh) scale(1.1);
+        transform: translate(40vw, 20vh) scale(1.5);
     }
 }
 

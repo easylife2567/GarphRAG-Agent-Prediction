@@ -1,5 +1,12 @@
 <template>
     <div class="system-container">
+        <!-- 动态渐变背景 -->
+        <div class="dynamic-background">
+            <div class="gradient-blob blob-1"></div>
+            <div class="gradient-blob blob-2"></div>
+            <div class="gradient-blob blob-3"></div>
+        </div>
+
         <!-- Main Content -->
         <main class="system-main">
             <!-- Hero Section -->
@@ -16,7 +23,7 @@
                     </h1>
 
                     <p class="hero-desc">
-                        基于核心认知图谱提取现实种子，毫秒级构建
+                        提取报告中的核心因子构建知识图谱，毫秒级搭建
                         <strong>百万级 Agent 平行世界</strong
                         >。通过全知视角注入变量干扰，在复杂的高维群体博弈中，动态坍缩出最优决策路径。
                     </p>
@@ -40,7 +47,7 @@
                                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                             </svg>
                         </div>
-                        <h3>Execution Pipeline</h3>
+                        <h3>执行引擎流水线</h3>
                     </div>
                     <div class="panel-body">
                         <div class="stepper-system">
@@ -53,6 +60,8 @@
                                     completed: activeStep > i,
                                     pending: activeStep < i,
                                 }"
+                                @mouseenter="hoveredStep = i"
+                                @mouseleave="hoveredStep = null"
                             >
                                 <div class="step-marker">
                                     <div class="marker-icon">
@@ -71,13 +80,25 @@
                                         </svg>
                                         <span v-else>{{ i + 1 }}</span>
                                     </div>
-                                    <div class="marker-line" v-if="i < steps.length - 1"></div>
+                                    <div class="marker-line" v-if="i < steps.length - 1">
+                                        <div
+                                            class="line-progress"
+                                            :class="{ 'is-filled': activeStep > i }"
+                                        ></div>
+                                    </div>
                                 </div>
                                 <div class="step-content">
                                     <h4 class="step-title">{{ step.title }}</h4>
-                                    <p class="step-desc" v-show="activeStep === i">
-                                        {{ step.desc }}
-                                    </p>
+                                    <div
+                                        class="step-desc-wrapper"
+                                        :class="{
+                                            'is-expanded': activeStep === i || hoveredStep === i,
+                                        }"
+                                    >
+                                        <p class="step-desc">
+                                            {{ step.desc }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,16 +121,16 @@
                                 <line x1="12" y1="19" x2="20" y2="19"></line>
                             </svg>
                         </div>
-                        <h3>Define Scenario</h3>
-                        <span class="tag-engine">Engine: V1.0</span>
+                        <h3>定义推演场景</h3>
+                        <span class="tag-engine">内核: V1.0</span>
                     </div>
                     <div class="panel-body input-container">
-                        <label class="input-label">Simulation Variables</label>
+                        <label class="input-label">推演核心变量</label>
                         <div class="textarea-wrapper" :class="{ 'is-focused': isInputFocused }">
                             <textarea
                                 v-model="formData.simulationRequirement"
                                 class="system-textarea"
-                                placeholder="Enter prediction variables here...&#10;e.g., 'If the university issues an announcement revoking the disciplinary action, what will be the trend of public opinion?'"
+                                placeholder="在此输入推演变量...&#10;例如：'如果事态进一步恶化，舆论走向会如何变化？'"
                                 rows="6"
                                 :disabled="loading"
                                 @focus="isInputFocused = true"
@@ -125,7 +146,7 @@
                                 :disabled="!canSubmit || loading"
                             >
                                 <span class="btn-content" v-if="!loading">
-                                    Initialize Simulation
+                                    初始化推演系统
                                     <svg
                                         viewBox="0 0 24 24"
                                         width="18"
@@ -157,7 +178,7 @@
                                         <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
                                         <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
                                     </svg>
-                                    Processing...
+                                    系统启动中...
                                 </span>
                             </button>
                         </div>
@@ -183,29 +204,29 @@
                                     <line x1="9" y1="21" x2="9" y2="9"></line>
                                 </svg>
                             </div>
-                            <h3>System Metrics</h3>
+                            <h3>系统实时指标</h3>
                         </div>
                         <div class="panel-body">
                             <div class="metrics-grid">
                                 <div class="metric-item">
-                                    <div class="metric-label">Graph Nodes (Entities)</div>
+                                    <div class="metric-label">图谱节点 (实体)</div>
                                     <div class="metric-value">
                                         {{ metrics.nodes.toLocaleString() }}
-                                        <span class="trend up">↑ Live</span>
+                                        <span class="trend up">↑ 实时</span>
                                     </div>
                                 </div>
                                 <div class="metric-item">
-                                    <div class="metric-label">Parallel Agents</div>
+                                    <div class="metric-label">并行智能体</div>
                                     <div class="metric-value">
                                         {{ (metrics.agents / 1000000).toFixed(3) }}M
-                                        <span class="trend up">↑</span>
+                                        <span class="trend up">↑ 活跃</span>
                                     </div>
                                 </div>
                                 <div class="metric-item">
-                                    <div class="metric-label">Inference Latency</div>
+                                    <div class="metric-label">推理延迟</div>
                                     <div class="metric-value highlight">
                                         ~{{ metrics.latency.toFixed(1) }}ms
-                                        <span class="trend down">Optimal</span>
+                                        <span class="trend down">极佳</span>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +250,7 @@
                                     <line x1="12" y1="3" x2="12" y2="15"></line>
                                 </svg>
                             </div>
-                            <h3>Knowledge Base</h3>
+                            <h3>上传知识库</h3>
                         </div>
                         <div class="panel-body">
                             <div
@@ -275,8 +296,8 @@
                                             <polyline points="21 15 16 10 5 21"></polyline>
                                         </svg>
                                     </div>
-                                    <span class="drop-text">Click or drag files</span>
-                                    <span class="drop-hint">PDF, MD, TXT</span>
+                                    <span class="drop-text">点击或拖拽文件至此</span>
+                                    <span class="drop-hint">支持 PDF, MD, TXT 格式</span>
                                 </div>
 
                                 <div v-else class="file-list">
@@ -337,14 +358,15 @@ import HistoryDatabase from '~/components/HistoryDatabase.vue';
 const router = useRouter();
 
 const steps = [
-    { title: 'Knowledge Graph', desc: '提取现实种子并构建 GraphRAG 底层网络。' },
-    { title: 'Environment Setup', desc: '抽取实体关系并配置高维仿真环境参数。' },
-    { title: 'Parallel Simulate', desc: '双平台高并发推演，实时更新时序记忆。' },
-    { title: 'Report Generate', desc: 'ReportAgent 多维度数据收敛与归因分析。' },
-    { title: 'Deep Interaction', desc: '开启上帝视角与推演节点建立直接对话。' },
+    { title: '知识图谱构建', desc: '提取现实种子并构建 GraphRAG 底层网络。' },
+    { title: '高维环境搭建', desc: '抽取实体关系并配置高维仿真环境参数。' },
+    { title: '多智能体推演', desc: '双平台高并发推演，实时更新时序记忆。' },
+    { title: '推演报告生成', desc: 'ReportAgent 多维度数据收敛与归因分析。' },
+    { title: '深度沙盘交互', desc: '开启上帝视角与推演节点建立直接对话。' },
 ];
 
 const activeStep = ref(0);
+const hoveredStep = ref(null);
 const isInputFocused = ref(false);
 
 const metrics = ref({
@@ -439,16 +461,81 @@ const startSimulation = () => {
     overflow-x: hidden;
 }
 
+/* 动态渐变背景 */
+.dynamic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--bg-base);
+}
+
+.gradient-blob {
+    position: absolute;
+    filter: blur(100px);
+    border-radius: 50%;
+    opacity: 0.25; /* 提高透明度使白色光晕更明显 */
+    animation: blob-float 12s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--text-primary) 0%, transparent 70%);
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--text-primary) 0%, transparent 70%);
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    top: 40%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+    animation-delay: -10s;
+}
+
+@keyframes blob-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30vw, 20vh) scale(1.4);
+    }
+    66% {
+        transform: translate(-20vw, 30vh) scale(0.7);
+    }
+    100% {
+        transform: translate(20vw, -10vh) scale(1.3);
+    }
+}
+
 /* Main Content */
 .system-main {
     position: relative;
     z-index: 10;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 64px 32px;
+    min-height: calc(100vh - 64px);
+    box-sizing: border-box;
+    padding: clamp(20px, 3vh, 40px) clamp(20px, 2.4vw, 32px) clamp(24px, 3vh, 40px);
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    gap: clamp(20px, 3vh, 36px);
 }
 
 /* Hero Section */
@@ -457,13 +544,15 @@ const startSimulation = () => {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .hero-content {
-    max-width: 720px;
+    max-width: min(720px, 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: clamp(10px, 1.6vh, 18px);
 }
 
 .status-indicator {
@@ -474,7 +563,7 @@ const startSimulation = () => {
     background: var(--bg-panel);
     border: 1px solid var(--border-dim);
     border-radius: 999px;
-    margin-bottom: 24px;
+    margin-bottom: 0;
 }
 
 .status-dot {
@@ -496,11 +585,11 @@ const startSimulation = () => {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.2rem, 4.8vw, 3.4rem);
     line-height: 1.1;
     font-weight: 700;
     letter-spacing: -0.04em;
-    margin: 0 0 24px 0;
+    margin: 0;
     color: var(--text-secondary);
 }
 
@@ -509,8 +598,9 @@ const startSimulation = () => {
 }
 
 .hero-desc {
-    font-size: 1.1rem;
-    line-height: 1.6;
+    max-width: 640px;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    line-height: 1.55;
     color: var(--text-secondary);
     margin: 0;
 }
@@ -523,9 +613,11 @@ const startSimulation = () => {
 /* Control Panel (Structured Layout) */
 .control-panel {
     display: grid;
-    grid-template-columns: 280px 1fr 320px;
-    gap: 24px;
-    align-items: start;
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(240px, 300px);
+    gap: clamp(16px, 1.8vw, 24px);
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
 }
 
 /* Panels */
@@ -539,10 +631,10 @@ const startSimulation = () => {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    min-height: 0;
 }
 
 .panel-main {
-    min-height: 500px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     border-color: var(--border-bright);
 }
@@ -552,13 +644,19 @@ const startSimulation = () => {
     border: none;
     box-shadow: none;
     gap: 24px;
+    justify-content: space-between;
+}
+
+.panel-metrics,
+.panel-upload {
+    flex: 1;
 }
 
 .panel-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 20px;
+    padding: clamp(12px, 1.4vh, 16px) clamp(14px, 1.6vw, 20px);
 }
 
 .panel-header.border-bottom {
@@ -589,10 +687,11 @@ const startSimulation = () => {
 }
 
 .panel-body {
-    padding: 20px;
+    padding: clamp(14px, 1.8vh, 20px) clamp(14px, 1.6vw, 20px);
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 0;
 }
 
 /* Left: Stepper System */
@@ -600,17 +699,22 @@ const startSimulation = () => {
     display: flex;
     flex-direction: column;
     gap: 0;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .step-item {
     display: flex;
     gap: 16px;
     position: relative;
-    padding-bottom: 24px;
+    flex: 1;
+    min-height: clamp(52px, 8vh, 68px);
+    cursor: pointer;
 }
 
 .step-item:last-child {
-    padding-bottom: 0;
+    flex: 0;
+    min-height: auto;
 }
 
 .step-marker {
@@ -633,7 +737,19 @@ const startSimulation = () => {
     font-size: 0.7rem;
     color: var(--text-secondary);
     z-index: 2;
-    transition: var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.marker-icon::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 .marker-line {
@@ -641,41 +757,113 @@ const startSimulation = () => {
     top: 24px;
     bottom: 0;
     left: 11.5px;
-    width: 1px;
+    width: 2px;
     background: var(--border-dim);
     z-index: 1;
+    overflow: hidden;
+}
+
+.line-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--text-primary);
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-progress.is-filled {
+    height: 100%;
 }
 
 .step-content {
     flex: 1;
     padding-top: 2px;
+    display: flex;
+    flex-direction: column;
 }
 
 .step-title {
-    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    font-size: clamp(0.82rem, 1vw, 0.9rem);
     font-weight: 500;
     color: var(--text-secondary);
     margin: 0 0 4px 0;
-    transition: var(--transition-smooth);
+    transition: all 0.3s ease;
+}
+
+.step-desc-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-desc-wrapper.is-expanded {
+    grid-template-rows: 1fr;
 }
 
 .step-desc {
-    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    font-size: clamp(0.72rem, 0.92vw, 0.8rem);
     color: var(--text-muted);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.4;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-desc-wrapper.is-expanded .step-desc {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Stepper States */
+.step-item:hover .step-title {
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+.step-item:hover .marker-icon {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
 .step-item.active .marker-icon {
     background: var(--text-primary);
     border-color: var(--text-primary);
     color: var(--bg-base);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    transform: scale(1.15);
+}
+
+.step-item.active .marker-icon::after {
+    border-color: var(--text-primary);
+    opacity: 0.3;
+    transform: scale(1.5);
+    animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    80%,
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
 }
 
 .step-item.active .step-title {
     color: var(--text-primary);
+    font-weight: 600;
 }
 
 .step-item.completed .marker-icon {
@@ -692,9 +880,13 @@ const startSimulation = () => {
     opacity: 0.5;
 }
 
+.step-item.pending:hover .marker-icon {
+    opacity: 1;
+}
+
 /* Center: Simulation Input */
 .input-container {
-    gap: 16px;
+    gap: clamp(12px, 1.6vh, 16px);
 }
 
 .input-label {
@@ -706,6 +898,7 @@ const startSimulation = () => {
 .textarea-wrapper {
     position: relative;
     flex: 1;
+    min-height: clamp(160px, 22vh, 220px);
     background: var(--bg-input);
     border: 1px solid var(--border-dim);
     border-radius: var(--radius-md);
@@ -724,13 +917,14 @@ const startSimulation = () => {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 16px;
+    padding: clamp(12px, 1.6vh, 16px);
     color: var(--text-primary);
     font-family: var(--font-mono);
     font-size: 0.9rem;
     line-height: 1.6;
     resize: none;
     outline: none;
+    overflow-y: auto;
 }
 
 .system-textarea::placeholder {
@@ -748,7 +942,7 @@ const startSimulation = () => {
     color: var(--bg-base);
     border: none;
     border-radius: var(--radius-sm);
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -780,7 +974,7 @@ const startSimulation = () => {
 .metrics-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: clamp(12px, 1.8vh, 20px);
 }
 
 .metric-item {
@@ -790,7 +984,7 @@ const startSimulation = () => {
 }
 
 .metric-label {
-    font-size: 0.75rem;
+    font-size: clamp(0.7rem, 0.8vw, 0.75rem);
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -798,7 +992,7 @@ const startSimulation = () => {
 
 .metric-value {
     font-family: var(--font-mono);
-    font-size: 1.5rem;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
     font-weight: 500;
     color: var(--text-primary);
     display: flex;
@@ -832,7 +1026,7 @@ const startSimulation = () => {
 .system-dropzone {
     border: 1px dashed var(--border-bright);
     border-radius: var(--radius-md);
-    padding: 24px;
+    padding: clamp(16px, 2vh, 24px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -840,7 +1034,7 @@ const startSimulation = () => {
     cursor: pointer;
     transition: var(--transition-fast);
     background: var(--bg-base);
-    min-height: 120px;
+    min-height: clamp(96px, 15vh, 120px);
 }
 
 .system-dropzone:hover,
@@ -863,13 +1057,13 @@ const startSimulation = () => {
 }
 
 .drop-text {
-    font-size: 0.85rem;
+    font-size: clamp(0.8rem, 0.95vw, 0.85rem);
     font-weight: 500;
     color: var(--text-primary);
 }
 
 .drop-hint {
-    font-size: 0.75rem;
+    font-size: clamp(0.7rem, 0.8vw, 0.75rem);
     color: var(--text-muted);
 }
 
@@ -947,6 +1141,93 @@ const startSimulation = () => {
     }
     .hero-title {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-height: 900px) {
+    .system-main {
+        padding: 20px 24px 24px;
+        gap: 20px;
+    }
+
+    .control-panel {
+        grid-template-columns: minmax(220px, 240px) minmax(0, 1fr) minmax(220px, 280px);
+    }
+
+    .panel-header {
+        padding: 12px 14px;
+    }
+
+    .panel-body {
+        padding: 14px;
+    }
+
+    .step-item {
+        min-height: 48px;
+    }
+
+    .textarea-wrapper {
+        min-height: 150px;
+    }
+
+    .system-dropzone {
+        min-height: 92px;
+    }
+}
+
+@media (max-height: 768px) {
+    .system-main {
+        padding: 16px 20px 20px;
+        gap: 16px;
+    }
+
+    .hero-content {
+        gap: 10px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-desc {
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    .control-panel {
+        grid-template-columns: minmax(200px, 220px) minmax(0, 1fr) minmax(220px, 260px);
+        gap: 14px;
+    }
+
+    .panel-header,
+    .panel-body {
+        padding: 12px;
+    }
+
+    .step-item {
+        min-height: 44px;
+    }
+
+    .step-desc {
+        line-height: 1.32;
+    }
+
+    .textarea-wrapper {
+        min-height: 132px;
+    }
+
+    .btn-primary-large {
+        padding: 9px 16px;
+        font-size: 0.9rem;
+    }
+
+    .metric-value {
+        font-size: 1.05rem;
+    }
+
+    .system-dropzone {
+        min-height: 84px;
+        padding: 14px;
     }
 }
 </style>

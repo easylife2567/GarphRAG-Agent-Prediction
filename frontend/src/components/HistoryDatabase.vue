@@ -848,6 +848,7 @@ onUnmounted(() => {
     border-radius: 4px;
     border: 1px solid var(--border-dim);
     overflow: hidden;
+    box-sizing: border-box; /* 确保 padding 不会撑破容器边界 */
 }
 
 .files-list {

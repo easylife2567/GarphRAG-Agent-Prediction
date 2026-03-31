@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
     app: {
         head: {
-            title: 'MiroFish - 预测万物',
+            title: '舆情推演平台',
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },

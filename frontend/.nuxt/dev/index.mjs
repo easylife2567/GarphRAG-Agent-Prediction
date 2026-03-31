@@ -2037,7 +2037,7 @@ const _G8IBQPNCsWNXV4lCbFYGap3Fr4Ouv6YEGW6UNvrelc = (function(nitro) {
 
 const rootDir = "/Users/easylife/Project/微舆/GarphRAG-Agent-Prediction/frontend";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"}],"link":[{"rel":"icon","type":"image/png","href":"/icon.png"},{"rel":"preconnect","href":"https://fonts.loli.net"},{"rel":"preconnect","href":"https://gstatic.loli.net","crossorigin":""},{"rel":"stylesheet","href":"https://fonts.loli.net/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"title":"MiroFish - 预测万物"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"}],"link":[{"rel":"icon","type":"image/png","href":"/icon.png"},{"rel":"preconnect","href":"https://fonts.loli.net"},{"rel":"preconnect","href":"https://gstatic.loli.net","crossorigin":""},{"rel":"stylesheet","href":"https://fonts.loli.net/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"title":"舆情推演平台"};
 
 const appRootTag = "div";
 
