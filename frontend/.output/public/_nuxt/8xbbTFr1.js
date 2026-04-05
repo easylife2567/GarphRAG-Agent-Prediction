@@ -1,1 +1,0 @@
-import{o as e,r as o}from"./DupEkqH4.js";const n=t=>o(()=>e.post("/report/generate",t),3,1e3),a=(t,r=0)=>e.get(`/report/${t}/agent-log`,{params:{from_line:r}}),g=(t,r=0)=>e.get(`/report/${t}/console-log`,{params:{from_line:r}}),p=t=>e.get(`/report/${t}`),c=t=>o(()=>e.post("/report/chat",t),3,1e3);export{a,g as b,c,n as d,p as g};

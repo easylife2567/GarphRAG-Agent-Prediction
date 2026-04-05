@@ -191,7 +191,7 @@ class GraphBuilderService:
         self.client.graph.create(
             graph_id=graph_id,
             name=name,
-            description="MiroFish Social Simulation Graph"
+            description="Social Simulation Graph"
         )
         
         return graph_id
