@@ -381,6 +381,12 @@ def prepare_simulation():
             "entity_types": ["Student", "PublicFigure"],  // 可选，指定实体类型
             "use_llm_for_profiles": true,                 // 可选，是否用LLM生成人设
             "parallel_profile_count": 5,                  // 可选，并行生成人设数量，默认5
+            "run_seed": 42,                               // 可选，实验随机种子，默认42
+            "case_tag": "case_a",                         // 可选，案例标签
+            "llm_lock": {                                 // 可选，LLM锁定参数
+                "temperature": 0.2,
+                "top_p": 1.0
+            },
             "force_regenerate": false                     // 可选，强制重新生成，默认false
         }
     
@@ -466,6 +472,9 @@ def prepare_simulation():
         entity_types_list = data.get('entity_types')
         use_llm_for_profiles = data.get('use_llm_for_profiles', True)
         parallel_profile_count = data.get('parallel_profile_count', 5)
+        run_seed = data.get('run_seed', 42)
+        case_tag = data.get('case_tag', '')
+        llm_lock = data.get('llm_lock') or {}
         
         # ========== 同步获取实体数量（在后台任务启动前） ==========
         # 这样前端在调用prepare后立即就能获取到预期Agent总数
@@ -582,7 +591,10 @@ def prepare_simulation():
                     defined_entity_types=entity_types_list,
                     use_llm_for_profiles=use_llm_for_profiles,
                     progress_callback=progress_callback,
-                    parallel_profile_count=parallel_profile_count
+                    parallel_profile_count=parallel_profile_count,
+                    run_seed=run_seed,
+                    llm_lock=llm_lock,
+                    case_tag=case_tag,
                 )
                 
                 # 任务完成
@@ -615,7 +627,9 @@ def prepare_simulation():
                 "message": "准备任务已启动，请通过 /api/simulation/prepare/status 查询进度",
                 "already_prepared": False,
                 "expected_entities_count": state.entities_count,  # 预期的Agent总数
-                "entity_types": state.entity_types  # 实体类型列表
+                "entity_types": state.entity_types,  # 实体类型列表
+                "run_seed": run_seed,
+                "case_tag": case_tag
             }
         })
         

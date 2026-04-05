@@ -7,6 +7,7 @@ import os
 import sys
 import json
 import time
+import hashlib
 import asyncio
 import threading
 import subprocess
@@ -309,6 +310,59 @@ class SimulationRunner:
         cls._run_states[state.simulation_id] = state
     
     @classmethod
+    def _extract_run_seed(cls, config: Dict[str, Any]) -> Optional[int]:
+        """从配置中提取随机种子"""
+        seed = config.get("run_seed")
+        if seed is None:
+            control = config.get("experiment_control", {})
+            if isinstance(control, dict):
+                seed = control.get("run_seed")
+        if seed is None:
+            return None
+        try:
+            return int(seed)
+        except (TypeError, ValueError):
+            return None
+    
+    @classmethod
+    def _write_run_manifest(
+        cls,
+        simulation_id: str,
+        config_path: str,
+        config: Dict[str, Any],
+        platform: str,
+        max_rounds: Optional[int]
+    ) -> None:
+        """生成运行清单，记录可复现元信息"""
+        sim_dir = os.path.join(cls.RUN_STATE_DIR, simulation_id)
+        os.makedirs(sim_dir, exist_ok=True)
+        
+        config_hash = ""
+        try:
+            with open(config_path, "rb") as f:
+                config_hash = hashlib.sha256(f.read()).hexdigest()
+        except Exception:
+            pass
+        
+        manifest = {
+            "simulation_id": simulation_id,
+            "started_at": datetime.now().isoformat(),
+            "platform": platform,
+            "max_rounds": max_rounds,
+            "run_seed": cls._extract_run_seed(config),
+            "llm_lock": config.get("llm_lock", {}),
+            "llm_model": config.get("llm_model", ""),
+            "llm_base_url": config.get("llm_base_url", ""),
+            "case_tag": config.get("case_tag", ""),
+            "config_path": config_path,
+            "config_sha256": config_hash,
+        }
+        
+        manifest_path = os.path.join(sim_dir, "run_manifest.json")
+        with open(manifest_path, "w", encoding="utf-8") as f:
+            json.dump(manifest, f, ensure_ascii=False, indent=2)
+    
+    @classmethod
     def start_simulation(
         cls,
         simulation_id: str,
@@ -344,6 +398,8 @@ class SimulationRunner:
         
         with open(config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
+        
+        run_seed = cls._extract_run_seed(config)
         
         # 初始化运行状态
         time_config = config.get("time_config", {})
@@ -431,6 +487,16 @@ class SimulationRunner:
             env = os.environ.copy()
             env['PYTHONUTF8'] = '1'  # Python 3.7+ 支持，让所有 open() 默认使用 UTF-8
             env['PYTHONIOENCODING'] = 'utf-8'  # 确保 stdout/stderr 使用 UTF-8
+            if run_seed is not None:
+                env['PYTHONHASHSEED'] = str(run_seed)
+            
+            cls._write_run_manifest(
+                simulation_id=simulation_id,
+                config_path=config_path,
+                config=config,
+                platform=platform,
+                max_rounds=max_rounds,
+            )
             
             # 设置工作目录为模拟目录（数据库等文件会生成在此）
             # 使用 start_new_session=True 创建新的进程组，确保可以通过 os.killpg 终止所有子进程
@@ -998,7 +1064,7 @@ class SimulationRunner:
         Returns:
             每轮的汇总信息
         """
-        actions = cls.get_actions(simulation_id, limit=10000)
+        actions = cls.get_all_actions(simulation_id)
         
         # 按轮次分组
         rounds: Dict[int, Dict[str, Any]] = {}
@@ -1059,7 +1125,7 @@ class SimulationRunner:
         Returns:
             Agent统计列表
         """
-        actions = cls.get_actions(simulation_id, limit=10000)
+        actions = cls.get_all_actions(simulation_id)
         
         agent_stats: Dict[int, Dict[str, Any]] = {}
         
@@ -1760,4 +1826,3 @@ class SimulationRunner:
             results = results[:limit]
         
         return results
-

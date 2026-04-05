@@ -6,7 +6,9 @@ OASIS模拟管理器
 
 import os
 import json
+import csv
 import shutil
+import random
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -234,7 +236,10 @@ class SimulationManager:
         defined_entity_types: Optional[List[str]] = None,
         use_llm_for_profiles: bool = True,
         progress_callback: Optional[callable] = None,
-        parallel_profile_count: int = 3
+        parallel_profile_count: int = 3,
+        run_seed: Optional[int] = None,
+        llm_lock: Optional[Dict[str, Any]] = None,
+        case_tag: str = ""
     ) -> SimulationState:
         """
         准备模拟环境（全程自动化）
@@ -254,6 +259,9 @@ class SimulationManager:
             use_llm_for_profiles: 是否使用LLM生成详细人设
             progress_callback: 进度回调函数 (stage, progress, message)
             parallel_profile_count: 并行生成人设的数量，默认3
+            run_seed: 随机种子（可选，用于可复现）
+            llm_lock: LLM采样参数锁定（可选）
+            case_tag: 案例标签（可选）
             
         Returns:
             SimulationState
@@ -302,6 +310,11 @@ class SimulationManager:
             
             # ========== 阶段2: 生成Agent Profile ==========
             total_entities = len(filtered.entities)
+            
+            # 为人设生成阶段设置随机种子，提升可复现性
+            if run_seed is not None:
+                random.seed(run_seed)
+                logger.info(f"已设置随机种子: run_seed={run_seed}")
             
             if progress_callback:
                 progress_callback(
@@ -389,7 +402,7 @@ class SimulationManager:
                     total=3
                 )
             
-            config_generator = SimulationConfigGenerator()
+            config_generator = SimulationConfigGenerator(llm_lock=llm_lock)
             
             if progress_callback:
                 progress_callback(
@@ -407,7 +420,9 @@ class SimulationManager:
                 document_text=document_text,
                 entities=filtered.entities,
                 enable_twitter=state.enable_twitter,
-                enable_reddit=state.enable_reddit
+                enable_reddit=state.enable_reddit,
+                run_seed=run_seed,
+                case_tag=case_tag,
             )
             
             if progress_callback:
@@ -484,11 +499,23 @@ class SimulationManager:
             raise ValueError(f"模拟不存在: {simulation_id}")
         
         sim_dir = self._get_simulation_dir(simulation_id)
-        profile_path = os.path.join(sim_dir, f"{platform}_profiles.json")
         
-        if not os.path.exists(profile_path):
+        if platform == "twitter":
+            csv_path = os.path.join(sim_dir, "twitter_profiles.csv")
+            if os.path.exists(csv_path):
+                with open(csv_path, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    return list(reader)
+            # 向后兼容：老版本若为JSON
+            json_path = os.path.join(sim_dir, "twitter_profiles.json")
+            if os.path.exists(json_path):
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
             return []
         
+        profile_path = os.path.join(sim_dir, "reddit_profiles.json")
+        if not os.path.exists(profile_path):
+            return []
         with open(profile_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     

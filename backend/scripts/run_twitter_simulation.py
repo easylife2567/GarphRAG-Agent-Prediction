@@ -405,6 +405,7 @@ class TwitterSimulationRunner:
         """
         self.config_path = config_path
         self.config = self._load_config()
+        self.run_seed = self._apply_seed_control()
         self.simulation_dir = os.path.dirname(config_path)
         self.wait_for_commands = wait_for_commands
         self.env = None
@@ -415,6 +416,23 @@ class TwitterSimulationRunner:
         """加载配置文件"""
         with open(self.config_path, 'r', encoding='utf-8') as f:
             return json.load(f)
+    
+    def _apply_seed_control(self) -> Optional[int]:
+        """应用随机种子控制，提升运行可复现性"""
+        seed = self.config.get("run_seed")
+        if seed is None:
+            control = self.config.get("experiment_control", {})
+            if isinstance(control, dict):
+                seed = control.get("run_seed")
+        if seed is None:
+            return None
+        try:
+            seed = int(seed)
+        except (TypeError, ValueError):
+            return None
+        random.seed(seed)
+        print(f"随机种子已设置: run_seed={seed}")
+        return seed
     
     def _get_profile_path(self) -> str:
         """获取Profile文件路径（OASIS Twitter使用CSV格式）"""

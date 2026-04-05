@@ -607,6 +607,27 @@ def load_config(config_path: str) -> Dict[str, Any]:
         return json.load(f)
 
 
+def apply_seed_control(config: Dict[str, Any], logger: Optional[SimulationLogManager] = None) -> Optional[int]:
+    """应用随机种子控制，提升运行可复现性"""
+    seed = config.get("run_seed")
+    if seed is None:
+        control = config.get("experiment_control", {})
+        if isinstance(control, dict):
+            seed = control.get("run_seed")
+    if seed is None:
+        return None
+    try:
+        seed = int(seed)
+    except (TypeError, ValueError):
+        return None
+    random.seed(seed)
+    if logger:
+        logger.info(f"随机种子已设置: run_seed={seed}")
+    else:
+        print(f"随机种子已设置: run_seed={seed}")
+    return seed
+
+
 # 需要过滤掉的非核心动作类型（这些动作对分析价值较低）
 FILTERED_ACTIONS = {'refresh', 'sign_up'}
 
@@ -1541,6 +1562,7 @@ async def main():
     log_manager = SimulationLogManager(simulation_dir)
     twitter_logger = log_manager.get_twitter_logger()
     reddit_logger = log_manager.get_reddit_logger()
+    apply_seed_control(config, logger=log_manager)
     
     log_manager.info("=" * 60)
     log_manager.info("OASIS 双平台并行模拟")
